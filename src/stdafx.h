@@ -20,8 +20,14 @@
 #include <afxcmn.h>			// MFC support for Windows Common Controls
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
-// SDK Headers
+// SDK Headers - Core
 #include "pimain\PIMain.h"
+#include "basic\fs_pidata.h"
+
+// SDK Headers - FRD (Foxit Reader/Editor)
+#include "frd\fr_appCalls.h"
+#include "frd\fr_barCalls.h"
+#include "frd\fr_docCalls.h"
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.

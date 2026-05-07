@@ -23,6 +23,7 @@ WebPlugin.cpp
 #include "WebPlugin.h"
 #include "WebBrowserDlg.h"
 #include "ConfigManager.h"
+#include "Resource.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -35,8 +36,6 @@ static char THIS_FILE[] = __FILE__;
 
 BEGIN_MESSAGE_MAP(CWebPluginApp, CWinApp)
 	//{{AFX_MSG_MAP(CWebPluginApp)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -45,8 +44,6 @@ END_MESSAGE_MAP()
 
 CWebPluginApp::CWebPluginApp()
 {
-	// TODO: add construction code here,
-	// Place all significant initialization in InitInstance
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -127,38 +124,33 @@ void OpenWebBrowserDlgProc(void* pData)
 	dlg.DoModal();
 }
 
-// Open Config Dialog
-void OpenConfigDlgProc(void* pData)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	HWND hWnd = FRAppGetMainFrameWnd();
-	
-	// Show config dialog for managing domains
-	MessageBox(hWnd, _T("Please edit the config/domains.json file to manage allowed domains."), 
-		_T("WebPlugin Configuration"), MB_OK | MB_ICONINFORMATION);
-}
-
 void PILoadRibbonUI(void* pParentWnd)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-	FR_RibbonBar fr_Bar = FRAppGetRibbonBar(NULL);
+	FR_RibbonBar fr_Bar = FRAppGetRibbonBar(pParentWnd);
+	if (!fr_Bar) return;
 
 	// Create a new category for WebPlugin
 	FR_RibbonCategory fr_Category = FRRibbonBarAddCategory(fr_Bar, "WebPlugin_Category", 
 		(FS_LPCWSTR)L"Web Browser");
 
+	if (!fr_Category) return;
+
 	// Create a panel
 	FR_RibbonPanel fr_Panel = FRRibbonCategoryAddPanel(fr_Category, "WebPlugin_Panel", 
 		(FS_LPCWSTR)L"Web Browser", NULL);
 
+	if (!fr_Panel) return;
+
 	// Add Open Browser button
 	FR_RibbonButton fr_Button = (FR_RibbonButton)FRRibbonPanelAddElement(fr_Panel, 
-		FR_RIBBON_BUTTON, "OpenWebBrowser", (FS_LPCWSTR)L"Open Browser", 0);
+		FR_RIBBON_BUTTON, "OpenWebBrowser", (FS_LPCWSTR)L"Open Browser", -1);
 	
-	FR_RibbonElement fr_Element = FRRibbonPanelGetElementByName(fr_Panel, "OpenWebBrowser");
-	FRRibbonElementSetExecuteProc(fr_Element, OpenWebBrowserDlgProc);
+	if (fr_Button)
+	{
+		FR_RibbonElementSetExecuteProc(fr_Button, OpenWebBrowserDlgProc, NULL);
+	}
 }
 
 void PILoadStatusBarUI(void* pParentWnd)

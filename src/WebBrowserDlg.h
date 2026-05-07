@@ -3,10 +3,6 @@
 
 #pragma once
 
-#include <afxdisp.h>
-#include <afxdisp.h>
-#include <comdef.h>
-#include <mshtml.h>
 #include <exdisp.h>
 
 // WebBrowserDlg.h : header file
@@ -38,10 +34,7 @@ public:
 	afx_msg void OnBnClickedBtnForward();
 	afx_msg void OnBnClickedBtnRefresh();
 	afx_msg void OnBnClickedBtnStop();
-	afx_msg void OnEnChangeEditUrl();
 	afx_msg void OnDestroy();
-	afx_msg LRESULT OnDocumentComplete(WPARAM wParam, LPARAM lParam);
-	afx_msg LRESULT OnNavigateComplete(WPARAM wParam, LPARAM lParam);
 
 	// Navigate to URL with domain checking
 	BOOL NavigateToURL(const CString& strURL);
@@ -73,7 +66,6 @@ private:
 	CButton m_wndBtnForward;
 	CButton m_wndBtnRefresh;
 	CButton m_wndBtnStop;
-	CStatic m_wndStatusText;
 };
 
 #endif // WEBBROWSERDLG_H

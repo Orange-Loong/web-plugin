@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "WebBrowserDlg.h"
-#include "afxdialogex.h"
+#include "Resource.h"
 #include "ConfigManager.h"
 
 // External config manager
@@ -39,6 +39,12 @@ CWebBrowserDlg::~CWebBrowserDlg()
 void CWebBrowserDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_EDIT_URL, m_wndUrlEdit);
+	DDX_Control(pDX, IDC_BTN_GO, m_wndBtnGo);
+	DDX_Control(pDX, IDC_BTN_BACK, m_wndBtnBack);
+	DDX_Control(pDX, IDC_BTN_FORWARD, m_wndBtnForward);
+	DDX_Control(pDX, IDC_BTN_REFRESH, m_wndBtnRefresh);
+	DDX_Control(pDX, IDC_BTN_STOP, m_wndBtnStop);
 }
 
 BEGIN_MESSAGE_MAP(CWebBrowserDlg, CDialog)
@@ -47,7 +53,6 @@ BEGIN_MESSAGE_MAP(CWebBrowserDlg, CDialog)
 	ON_BN_CLICKED(IDC_BTN_FORWARD, &CWebBrowserDlg::OnBnClickedBtnForward)
 	ON_BN_CLICKED(IDC_BTN_REFRESH, &CWebBrowserDlg::OnBnClickedBtnRefresh)
 	ON_BN_CLICKED(IDC_BTN_STOP, &CWebBrowserDlg::OnBnClickedBtnStop)
-	ON_EN_CHANGE(IDC_EDIT_URL, &CWebBrowserDlg::OnEnChangeEditUrl)
 	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
@@ -91,24 +96,13 @@ BOOL CWebBrowserDlg::InitWebBrowser()
 	}
 	
 	// Get the IWebBrowser2 interface
-	HWND hBrowserWnd = pBrowserWnd->m_hWnd;
-	if (!hBrowserWnd)
+	LPUNKNOWN pUnk = pBrowserWnd->GetControlUnknown();
+	if (!pUnk)
 	{
 		return FALSE;
 	}
 	
-	// Get the automation interface
-	LPDISPATCH pDispatch = NULL;
-	pBrowserWnd->GetControlUnknown()->QueryInterface(IID_IDispatch, (void**)&pDispatch);
-	if (!pDispatch)
-	{
-		return FALSE;
-	}
-	
-	// Get IWebBrowser2 interface
-	HRESULT hr = pDispatch->QueryInterface(IID_IWebBrowser2, (void**)&m_pWebBrowser);
-	pDispatch->Release();
-	
+	HRESULT hr = pUnk->QueryInterface(IID_IWebBrowser2, (void**)&m_pWebBrowser);
 	if (FAILED(hr))
 	{
 		return FALSE;
@@ -236,24 +230,12 @@ void CWebBrowserDlg::UpdateNavButtons()
 		return;
 	}
 	
-	// Update back button
-	VARIANT_BOOL bCanGoBack;
-	m_pWebBrowser->get_Back(&bCanGoBack);
-	m_wndBtnBack.EnableWindow(bCanGoBack == VARIANT_TRUE);
-	
-	// Update forward button
-	VARIANT_BOOL bCanGoForward;
-	m_pWebBrowser->get_Forward(&bCanGoForward);
-	m_wndBtnForward.EnableWindow(bCanGoForward == VARIANT_TRUE);
-	
-	// Update stop button
+	// Enable/disable buttons based on navigation state
 	m_wndBtnStop.EnableWindow(m_bIsNavigating);
 }
 
 void CWebBrowserDlg::OnBnClickedBtnGo()
 {
-	UpdateData(TRUE);
-	
 	CString strURL;
 	m_wndUrlEdit.GetWindowText(strURL);
 	
@@ -297,11 +279,6 @@ void CWebBrowserDlg::OnBnClickedBtnStop()
 	}
 }
 
-void CWebBrowserDlg::OnEnChangeEditUrl()
-{
-	// Could add URL validation here
-}
-
 void CWebBrowserDlg::OnDestroy()
 {
 	if (m_pWebBrowser)
@@ -320,27 +297,4 @@ void CWebBrowserDlg::OnDestroy()
 void CWebBrowserDlg::ShowError(const CString& strMessage)
 {
 	MessageBox(strMessage, _T("WebPlugin Error"), MB_OK | MB_ICONERROR);
-}
-
-LRESULT CWebBrowserDlg::OnDocumentComplete(WPARAM wParam, LPARAM lParam)
-{
-	m_bIsNavigating = FALSE;
-	UpdateNavButtons();
-	
-	// Update URL in edit box
-	CString strCurrentURL = GetCurrentURL();
-	if (!strCurrentURL.IsEmpty())
-	{
-		m_wndUrlEdit.SetWindowText(strCurrentURL);
-	}
-	
-	return 0;
-}
-
-LRESULT CWebBrowserDlg::OnNavigateComplete(WPARAM wParam, LPARAM lParam)
-{
-	m_bIsNavigating = FALSE;
-	UpdateNavButtons();
-	
-	return 0;
 }
