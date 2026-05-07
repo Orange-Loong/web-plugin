@@ -11,7 +11,6 @@
 #include "winres.h"
 #endif
 /////////////////////////////////////////////////////////////////////////////
-#define IDC_STATIC                      -1
 
 /////////////////////////////////////////////////////////////////////////////
 // English (Simplified, China) resources
@@ -33,7 +32,7 @@ END
 2 TEXTINCLUDE 
 BEGIN
     "#ifndef APSTUDIO_INVOKED\r\n"
-    "#include ""targetver.h""\r\n"
+    "#include ""winres.h""\r\n"
     "#endif\r\n"
     "\0"
 END
@@ -57,14 +56,13 @@ EXSTYLE WS_EX_APPWINDOW
 CAPTION "Web Browser"
 FONT 9, "Segoe UI", 400, 0, 0x1
 BEGIN
-    LTEXT           "URL:",IDC_STATIC_URL,10,10,30,14
-    EDITTEXT        IDC_EDIT_URL,45,8,470,14,ES_AUTOHSCROLL | WS_DISABLED
-    PUSHBUTTON      "Go",IDC_BTN_GO,520,8,60,14,WS_DISABLED
+    LTEXT           "URL:",IDC_STATIC,10,10,30,14
+    EDITTEXT        IDC_EDIT_URL,45,8,470,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Go",IDC_BTN_GO,520,8,60,14
     PUSHBUTTON      "<",IDC_BTN_BACK,10,35,30,14
     PUSHBUTTON      ">",IDC_BTN_FORWARD,45,35,30,14
     PUSHBUTTON      "Refresh",IDC_BTN_REFRESH,80,35,50,14
     PUSHBUTTON      "Stop",IDC_BTN_STOP,135,35,40,14
-    LTEXT           "",IDC_STATIC_STATUS,180,35,100,14
     CONTROL         "",IDC_EXPLORER1,"{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP | 0x8000000,10,55,580,385
 END
 
@@ -105,12 +103,3 @@ END
 
 #endif    // English (Simplified, China) resources
 /////////////////////////////////////////////////////////////////////////////
-
-#ifndef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 3 resource.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#endif    // !APSTUDIO_INVOKED
