@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "defaultURL": "https://www.example.com",
+  "defaultURL": "https://www.baidu.com",
   "domains": [
-    "*.example.com",
+    "*.baidu.com",
     "localhost",
     "127.0.0.1"
   ]
