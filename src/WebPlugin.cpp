@@ -149,7 +149,7 @@ void PILoadRibbonUI(void* pParentWnd)
 	
 	if (fr_Button)
 	{
-		FRRibbonElementSetExecuteProc(fr_Button, OpenWebBrowserDlgProc);
+		FRRibbonElementSetExecuteProc((FR_RibbonElement)fr_Button, OpenWebBrowserDlgProc);
 	}
 }
 
