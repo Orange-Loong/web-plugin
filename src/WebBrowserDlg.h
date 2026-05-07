@@ -4,6 +4,7 @@
 #pragma once
 
 #include <exdisp.h>
+#include "Resource.h"
 
 // WebBrowserDlg.h : header file
 //
