@@ -10,6 +10,11 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+// Define Windows version before including Windows headers
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0A00  // Windows 10
+#endif
+
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
 #include <afxwin.h>         // MFC core and standard components
@@ -24,10 +29,10 @@
 #include "pimain\PIMain.h"
 #include "basic\fs_pidata.h"
 
-// SDK Headers - FRD (Foxit Reader/Editor)
+// SDK Headers - FRD (Foxit Reader/Editor) - Only include what we need
+// Note: fr_docCalls.h has macro issues, avoid including it directly
 #include "frd\fr_appCalls.h"
 #include "frd\fr_barCalls.h"
-#include "frd\fr_docCalls.h"
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
