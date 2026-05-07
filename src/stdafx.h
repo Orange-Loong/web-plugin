@@ -21,7 +21,7 @@
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
 // SDK Headers
-#include "..\include\pimain\PIMain.h"
+#include "pimain\PIMain.h"
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.

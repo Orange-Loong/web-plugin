@@ -1,0 +1,3521 @@
+﻿/*****************************************************************************
+
+Copyright (C) 2024 Foxit Corporation
+All rights reserved.
+
+NOTICE: Foxit permits you to use, modify, and distribute this file
+in accordance with the terms of the Foxit license agreement
+accompanying it. If you have received this file from a source other
+than Foxit, then your use, modification, or distribution of it
+ requires the prior written permission of Foxit.
+ 
+*****************************************************************************/
+
+#ifndef FS_CATEGORIESINFO_H
+#define FS_CATEGORIESINFO_H
+
+#include "fs_funcTabInitiator.h"
+
+typedef struct __FRCategoryInfo__
+{
+	int categorySEL;
+	int interfaceNum;
+	void (*lpfnInitFuncMappingTable)(void* pMgr, bool bNeedInitParent);
+}FRCategoryInfo,*PFRCategoryInfo;
+
+// pay attention to the orders of this array. The orders can not be changed.
+FRCategoryInfo g_CategoryInfoList[CoreCategoriesNum + 1] = 
+{
+
+	#ifndef FX_READER_DLL
+
+//----------_V1----------
+// In file fs_basicImpl.h
+	{ FSExtensionHFTMgrSEL, FSExtensionHFTMgrInterfacesNum,  CFS_ExtensionHFTMgr_V1_Initiator::InitFuncMappingTable },
+	{ FSAffineMatrixSEL, FSAffineMatrixInterfacesNum,  CFS_AffineMatrix_V1_Initiator::InitFuncMappingTable },
+	{ FSDIBitmapSEL, FSDIBitmapInterfacesNum,  CFS_DIBitmap_V1_Initiator::InitFuncMappingTable },
+	{ FSMapPtrToPtrSEL, FSMapPtrToPtrInterfacesNum,  CFS_MapPtrToPtr_V1_Initiator::InitFuncMappingTable },
+	{ FSPtrArraySEL, FSPtrArrayInterfacesNum,  CFS_PtrArray_V1_Initiator::InitFuncMappingTable },
+	{ FSByteArraySEL, FSByteArrayInterfacesNum,  CFS_ByteArray_V1_Initiator::InitFuncMappingTable },
+	{ FSWordArraySEL, FSWordArrayInterfacesNum,  CFS_WordArray_V1_Initiator::InitFuncMappingTable },
+	{ FSDWordArraySEL, FSDWordArrayInterfacesNum,  CFS_DWordArray_V1_Initiator::InitFuncMappingTable },
+	{ FSByteStringArraySEL, FSByteStringArrayInterfacesNum,  CFS_ByteStringArray_V1_Initiator::InitFuncMappingTable },
+	{ FSWideStringArraySEL, FSWideStringArrayInterfacesNum,  CFS_WideStringArray_V1_Initiator::InitFuncMappingTable },
+	{ FSCodeTransformationSEL, FSCodeTransformationInterfacesNum,  CFS_CodeTransformation_V1_Initiator::InitFuncMappingTable },
+	{ FSFloatRectArraySEL, FSFloatRectArrayInterfacesNum,  CFS_FloatRectArray_V1_Initiator::InitFuncMappingTable },
+	{ FSBinaryBufSEL, FSBinaryBufInterfacesNum,  CFS_BinaryBuf_V1_Initiator::InitFuncMappingTable },
+	{ FSPauseHandlerSEL, FSPauseHandlerInterfacesNum,  CFS_PauseHandler_V1_Initiator::InitFuncMappingTable },
+	{ FSFileReadHandlerSEL, FSFileReadHandlerInterfacesNum,  CFS_FileReadHandler_V1_Initiator::InitFuncMappingTable },
+	{ FSStreamWriteHandlerSEL, FSStreamWriteHandlerInterfacesNum,  CFS_StreamWriteHandler_V1_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+	{ FSCharMapSEL, FSCharMapInterfacesNum,  CFS_CharMap_V1_Initiator::InitFuncMappingTable },
+	{ FSByteStringSEL, FSByteStringInterfacesNum,  CFS_ByteString_V1_Initiator::InitFuncMappingTable },
+	{ FSWideStringSEL, FSWideStringInterfacesNum,  CFS_WideString_V1_Initiator::InitFuncMappingTable },
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRToolSEL, FRToolInterfacesNum,  CFR_Tool_V1_Initiator::InitFuncMappingTable },
+	{ FRAppSEL, FRAppInterfacesNum,  CFR_App_V1_Initiator::InitFuncMappingTable },
+	{ FRLanguageSEL, FRLanguageInterfacesNum,  CFR_Language_V1_Initiator::InitFuncMappingTable },
+	{ FRUIProgressSEL, FRUIProgressInterfacesNum,  CFR_UIProgress_V1_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRToolButtonSEL, FRToolButtonInterfacesNum,  CFR_ToolButton_V1_Initiator::InitFuncMappingTable },
+	{ FRToolBarSEL, FRToolBarInterfacesNum,  CFR_ToolBar_V1_Initiator::InitFuncMappingTable },
+	{ FRMessageBarSEL, FRMessageBarInterfacesNum,  CFR_MessageBar_V1_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRDocSEL, FRDocInterfacesNum,  CFR_Doc_V1_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+	{ FRMenuBarSEL, FRMenuBarInterfacesNum,  CFR_MenuBar_V1_Initiator::InitFuncMappingTable },
+	{ FRMenuSEL, FRMenuInterfacesNum,  CFR_Menu_V1_Initiator::InitFuncMappingTable },
+	{ FRMenuItemSEL, FRMenuItemInterfacesNum,  CFR_MenuItem_V1_Initiator::InitFuncMappingTable },
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+	{ FRSysSEL, FRSysInterfacesNum,  CFR_Sys_V1_Initiator::InitFuncMappingTable },
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRDocViewSEL, FRDocViewInterfacesNum,  CFR_DocView_V1_Initiator::InitFuncMappingTable },
+	{ FRPageViewSEL, FRPageViewInterfacesNum,  CFR_PageView_V1_Initiator::InitFuncMappingTable },
+	{ FRTextSelectToolSEL, FRTextSelectToolInterfacesNum,  CFR_TextSelectTool_V1_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDDocSEL, FPDDocInterfacesNum,  CFPD_Doc_V1_Initiator::InitFuncMappingTable },
+	{ FPDNameTreeSEL, FPDNameTreeInterfacesNum,  CFPD_NameTree_V1_Initiator::InitFuncMappingTable },
+	{ FPDBookmarkSEL, FPDBookmarkInterfacesNum,  CFPD_Bookmark_V1_Initiator::InitFuncMappingTable },
+	{ FPDDestSEL, FPDDestInterfacesNum,  CFPD_Dest_V1_Initiator::InitFuncMappingTable },
+	{ FPDOCContextSEL, FPDOCContextInterfacesNum,  CFPD_OCContext_V1_Initiator::InitFuncMappingTable },
+	{ FPDOCGroupSEL, FPDOCGroupInterfacesNum,  CFPD_OCGroup_V1_Initiator::InitFuncMappingTable },
+	{ FPDOCGroupSetSEL, FPDOCGroupSetInterfacesNum,  CFPD_OCGroupSet_V1_Initiator::InitFuncMappingTable },
+	{ FPDOCNotifySEL, FPDOCNotifyInterfacesNum,  CFPD_OCNotify_V1_Initiator::InitFuncMappingTable },
+	{ FPDOCPropertiesSEL, FPDOCPropertiesInterfacesNum,  CFPD_OCProperties_V1_Initiator::InitFuncMappingTable },
+	{ FPDLWinParamSEL, FPDLWinParamInterfacesNum,  CFPD_LWinParam_V1_Initiator::InitFuncMappingTable },
+	{ FPDActionFieldsSEL, FPDActionFieldsInterfacesNum,  CFPD_ActionFields_V1_Initiator::InitFuncMappingTable },
+	{ FPDActionSEL, FPDActionInterfacesNum,  CFPD_Action_V1_Initiator::InitFuncMappingTable },
+	{ FPDAActionSEL, FPDAActionInterfacesNum,  CFPD_AAction_V1_Initiator::InitFuncMappingTable },
+	{ FPDDocJSActionsSEL, FPDDocJSActionsInterfacesNum,  CFPD_DocJSActions_V1_Initiator::InitFuncMappingTable },
+	{ FPDFileSpecSEL, FPDFileSpecInterfacesNum,  CFPD_FileSpec_V1_Initiator::InitFuncMappingTable },
+	{ FPDMediaPlayerSEL, FPDMediaPlayerInterfacesNum,  CFPD_MediaPlayer_V1_Initiator::InitFuncMappingTable },
+	{ FPDRenditionSEL, FPDRenditionInterfacesNum,  CFPD_Rendition_V1_Initiator::InitFuncMappingTable },
+	{ FPDLinkSEL, FPDLinkInterfacesNum,  CFPD_Link_V1_Initiator::InitFuncMappingTable },
+	{ FPDAnnotSEL, FPDAnnotInterfacesNum,  CFPD_Annot_V1_Initiator::InitFuncMappingTable },
+	{ FPDAnnotListSEL, FPDAnnotListInterfacesNum,  CFPD_AnnotList_V1_Initiator::InitFuncMappingTable },
+	{ FPDDefaultAppearanceSEL, FPDDefaultAppearanceInterfacesNum,  CFPD_DefaultAppearance_V1_Initiator::InitFuncMappingTable },
+	{ FPDFormNotifySEL, FPDFormNotifyInterfacesNum,  CFPD_FormNotify_V1_Initiator::InitFuncMappingTable },
+	{ FPDInterFormSEL, FPDInterFormInterfacesNum,  CFPD_InterForm_V1_Initiator::InitFuncMappingTable },
+	{ FPDFormFieldSEL, FPDFormFieldInterfacesNum,  CFPD_FormField_V1_Initiator::InitFuncMappingTable },
+	{ FPDIconFitSEL, FPDIconFitInterfacesNum,  CFPD_IconFit_V1_Initiator::InitFuncMappingTable },
+	{ FPDFormControlSEL, FPDFormControlInterfacesNum,  CFPD_FormControl_V1_Initiator::InitFuncMappingTable },
+	{ FPDFDFDocSEL, FPDFDFDocInterfacesNum,  CFPD_FDFDoc_V1_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+	{ FPDObjectSEL, FPDObjectInterfacesNum,  CFPD_Object_V1_Initiator::InitFuncMappingTable },
+	{ FPDBooleanSEL, FPDBooleanInterfacesNum,  CFPD_Boolean_V1_Initiator::InitFuncMappingTable },
+	{ FPDNumberSEL, FPDNumberInterfacesNum,  CFPD_Number_V1_Initiator::InitFuncMappingTable },
+	{ FPDStringSEL, FPDStringInterfacesNum,  CFPD_String_V1_Initiator::InitFuncMappingTable },
+	{ FPDNameSEL, FPDNameInterfacesNum,  CFPD_Name_V1_Initiator::InitFuncMappingTable },
+	{ FPDArraySEL, FPDArrayInterfacesNum,  CFPD_Array_V1_Initiator::InitFuncMappingTable },
+	{ FPDDictionarySEL, FPDDictionaryInterfacesNum,  CFPD_Dictionary_V1_Initiator::InitFuncMappingTable },
+	{ FPDStreamSEL, FPDStreamInterfacesNum,  CFPD_Stream_V1_Initiator::InitFuncMappingTable },
+	{ FPDStreamAccSEL, FPDStreamAccInterfacesNum,  CFPD_StreamAcc_V1_Initiator::InitFuncMappingTable },
+	{ FPDStreamFilterSEL, FPDStreamFilterInterfacesNum,  CFPD_StreamFilter_V1_Initiator::InitFuncMappingTable },
+	{ FPDNullSEL, FPDNullInterfacesNum,  CFPD_Null_V1_Initiator::InitFuncMappingTable },
+	{ FPDReferenceSEL, FPDReferenceInterfacesNum,  CFPD_Reference_V1_Initiator::InitFuncMappingTable },
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+	{ FPDPageSEL, FPDPageInterfacesNum,  CFPD_Page_V1_Initiator::InitFuncMappingTable },
+	{ FPDParseOptionsSEL, FPDParseOptionsInterfacesNum,  CFPD_ParseOptions_V1_Initiator::InitFuncMappingTable },
+	{ FPDFormSEL, FPDFormInterfacesNum,  CFPD_Form_V1_Initiator::InitFuncMappingTable },
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+	{ FPDPathSEL, FPDPathInterfacesNum,  CFPD_Path_V1_Initiator::InitFuncMappingTable },
+	{ FPDClipPathSEL, FPDClipPathInterfacesNum,  CFPD_ClipPath_V1_Initiator::InitFuncMappingTable },
+	{ FPDColorStateSEL, FPDColorStateInterfacesNum,  CFPD_ColorState_V1_Initiator::InitFuncMappingTable },
+	{ FPDTextStateSEL, FPDTextStateInterfacesNum,  CFPD_TextState_V1_Initiator::InitFuncMappingTable },
+	{ FPDGeneralStateSEL, FPDGeneralStateInterfacesNum,  CFPD_GeneralState_V1_Initiator::InitFuncMappingTable },
+	{ FPDGraphStateSEL, FPDGraphStateInterfacesNum,  CFPD_GraphState_V1_Initiator::InitFuncMappingTable },
+	{ FPDPageObjectSEL, FPDPageObjectInterfacesNum,  CFPD_PageObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDTextObjectSEL, FPDTextObjectInterfacesNum,  CFPD_TextObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDPathObjectSEL, FPDPathObjectInterfacesNum,  CFPD_PathObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDImageObjectSEL, FPDImageObjectInterfacesNum,  CFPD_ImageObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDShadingObjectSEL, FPDShadingObjectInterfacesNum,  CFPD_ShadingObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDFormObjectSEL, FPDFormObjectInterfacesNum,  CFPD_FormObject_V1_Initiator::InitFuncMappingTable },
+	{ FPDInlineImagesSEL, FPDInlineImagesInterfacesNum,  CFPD_InlineImages_V1_Initiator::InitFuncMappingTable },
+	{ FPDContentMarkItemSEL, FPDContentMarkItemInterfacesNum,  CFPD_ContentMarkItem_V1_Initiator::InitFuncMappingTable },
+	{ FPDContentMarkSEL, FPDContentMarkInterfacesNum,  CFPD_ContentMark_V1_Initiator::InitFuncMappingTable },
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+	{ FPDParserSEL, FPDParserInterfacesNum,  CFPD_Parser_V1_Initiator::InitFuncMappingTable },
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+	{ FPDRenderOptionsSEL, FPDRenderOptionsInterfacesNum,  CFPD_RenderOptions_V1_Initiator::InitFuncMappingTable },
+	{ FPDRenderContextSEL, FPDRenderContextInterfacesNum,  CFPD_RenderContext_V1_Initiator::InitFuncMappingTable },
+	{ FPDProgressiveRenderSEL, FPDProgressiveRenderInterfacesNum,  CFPD_ProgressiveRender_V1_Initiator::InitFuncMappingTable },
+	{ FPDRenderDeviceSEL, FPDRenderDeviceInterfacesNum,  CFPD_RenderDevice_V1_Initiator::InitFuncMappingTable },
+	{ FPDFxgeDeviceSEL, FPDFxgeDeviceInterfacesNum,  CFPD_FxgeDevice_V1_Initiator::InitFuncMappingTable },
+	{ FPDWindowsDeviceSEL, FPDWindowsDeviceInterfacesNum,  CFPD_WindowsDevice_V1_Initiator::InitFuncMappingTable },
+	{ FPDPageRenderCacheSEL, FPDPageRenderCacheInterfacesNum,  CFPD_PageRenderCache_V1_Initiator::InitFuncMappingTable },
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+	{ FPDFontSEL, FPDFontInterfacesNum,  CFPD_Font_V1_Initiator::InitFuncMappingTable },
+	{ FPDFontEncodingSEL, FPDFontEncodingInterfacesNum,  CFPD_FontEncoding_V1_Initiator::InitFuncMappingTable },
+	{ FPDType1FontSEL, FPDType1FontInterfacesNum,  CFPD_Type1Font_V1_Initiator::InitFuncMappingTable },
+	{ FPDTrueTypeFontSEL, FPDTrueTypeFontInterfacesNum,  CFPD_TrueTypeFont_V1_Initiator::InitFuncMappingTable },
+	{ FPDType3CharSEL, FPDType3CharInterfacesNum,  CFPD_Type3Char_V1_Initiator::InitFuncMappingTable },
+	{ FPDType3FontSEL, FPDType3FontInterfacesNum,  CFPD_Type3Font_V1_Initiator::InitFuncMappingTable },
+	{ FPDCIDFontSEL, FPDCIDFontInterfacesNum,  CFPD_CIDFont_V1_Initiator::InitFuncMappingTable },
+	{ FPDCIDUtilSEL, FPDCIDUtilInterfacesNum,  CFPD_CIDUtil_V1_Initiator::InitFuncMappingTable },
+	{ FPDColorSpaceSEL, FPDColorSpaceInterfacesNum,  CFPD_ColorSpace_V1_Initiator::InitFuncMappingTable },
+	{ FPDColorSEL, FPDColorInterfacesNum,  CFPD_Color_V1_Initiator::InitFuncMappingTable },
+	{ FPDPatternSEL, FPDPatternInterfacesNum,  CFPD_Pattern_V1_Initiator::InitFuncMappingTable },
+	{ FPDTilingPatternSEL, FPDTilingPatternInterfacesNum,  CFPD_TilingPattern_V1_Initiator::InitFuncMappingTable },
+	{ FPDShadingPatternSEL, FPDShadingPatternInterfacesNum,  CFPD_ShadingPattern_V1_Initiator::InitFuncMappingTable },
+	{ FPDMeshStreamSEL, FPDMeshStreamInterfacesNum,  CFPD_MeshStream_V1_Initiator::InitFuncMappingTable },
+	{ FPDImageSEL, FPDImageInterfacesNum,  CFPD_Image_V1_Initiator::InitFuncMappingTable },
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+	{ FPDObjArchiveSaverSEL, FPDObjArchiveSaverInterfacesNum,  CFPD_ObjArchiveSaver_V1_Initiator::InitFuncMappingTable },
+	{ FPDObjArchiveLoaderSEL, FPDObjArchiveLoaderInterfacesNum,  CFPD_ObjArchiveLoader_V1_Initiator::InitFuncMappingTable },
+	{ FPDPageArchiveSaverSEL, FPDPageArchiveSaverInterfacesNum,  CFPD_PageArchiveSaver_V1_Initiator::InitFuncMappingTable },
+	{ FPDPageArchiveLoaderSEL, FPDPageArchiveLoaderInterfacesNum,  CFPD_PageArchiveLoader_V1_Initiator::InitFuncMappingTable },
+	{ FPDCreatorSEL, FPDCreatorInterfacesNum,  CFPD_Creator_V1_Initiator::InitFuncMappingTable },
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+	{ FPDProgressiveSearchSEL, FPDProgressiveSearchInterfacesNum,  CFPD_ProgressiveSearch_V1_Initiator::InitFuncMappingTable },
+	{ FPDTextPageSEL, FPDTextPageInterfacesNum,  CFPD_TextPage_V1_Initiator::InitFuncMappingTable },
+	{ FPDTextPageFindSEL, FPDTextPageFindInterfacesNum,  CFPD_TextPageFind_V1_Initiator::InitFuncMappingTable },
+	{ FPDLinkExtractSEL, FPDLinkExtractInterfacesNum,  CFPD_LinkExtract_V1_Initiator::InitFuncMappingTable },
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V2----------
+// In file fs_basicImpl.h
+	{ FSBase64EncoderSEL, FSBase64EncoderInterfacesNum,  CFS_Base64Encoder_V2_Initiator::InitFuncMappingTable },
+	{ FSBase64DecoderSEL, FSBase64DecoderInterfacesNum,  CFS_Base64Decoder_V2_Initiator::InitFuncMappingTable },
+	{ FSFileWriteHandlerSEL, FSFileWriteHandlerInterfacesNum,  CFS_FileWriteHandler_V2_Initiator::InitFuncMappingTable },
+	{ FSXMLElementSEL, FSXMLElementInterfacesNum,  CFS_XMLElement_V2_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+	{ FDRMCategoryReadSEL, FDRMCategoryReadInterfacesNum,  CFDRM_CategoryRead_V2_Initiator::InitFuncMappingTable },
+	{ FDRMCategoryWriteSEL, FDRMCategoryWriteInterfacesNum,  CFDRM_CategoryWrite_V2_Initiator::InitFuncMappingTable },
+	{ FDRMDescDataSEL, FDRMDescDataInterfacesNum,  CFDRM_DescData_V2_Initiator::InitFuncMappingTable },
+	{ FDRMScriptDataSEL, FDRMScriptDataInterfacesNum,  CFDRM_ScriptData_V2_Initiator::InitFuncMappingTable },
+	{ FDRMPresentationDataSEL, FDRMPresentationDataInterfacesNum,  CFDRM_PresentationData_V2_Initiator::InitFuncMappingTable },
+	{ FDRMSignatureDataSEL, FDRMSignatureDataInterfacesNum,  CFDRM_SignatureData_V2_Initiator::InitFuncMappingTable },
+	{ FDRMDescReadSEL, FDRMDescReadInterfacesNum,  CFDRM_DescRead_V2_Initiator::InitFuncMappingTable },
+	{ FDRMDescWriteSEL, FDRMDescWriteInterfacesNum,  CFDRM_DescWrite_V2_Initiator::InitFuncMappingTable },
+	{ FDRMFoacReadSEL, FDRMFoacReadInterfacesNum,  CFDRM_FoacRead_V2_Initiator::InitFuncMappingTable },
+	{ FDRMFoacWriteSEL, FDRMFoacWriteInterfacesNum,  CFDRM_FoacWrite_V2_Initiator::InitFuncMappingTable },
+	{ FDRMEnvelopeReadSEL, FDRMEnvelopeReadInterfacesNum,  CFDRM_EnvelopeRead_V2_Initiator::InitFuncMappingTable },
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+	{ FDRMMgrSEL, FDRMMgrInterfacesNum,  CFDRM_Mgr_V2_Initiator::InitFuncMappingTable },
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+	{ FDRMPDFSecurityHandlerSEL, FDRMPDFSecurityHandlerInterfacesNum,  CFDRM_PDFSecurityHandler_V2_Initiator::InitFuncMappingTable },
+	{ FDRMPDFSchemaSEL, FDRMPDFSchemaInterfacesNum,  CFDRM_PDFSchema_V2_Initiator::InitFuncMappingTable },
+	{ FDRMEncryptDictReadSEL, FDRMEncryptDictReadInterfacesNum,  CFDRM_EncryptDictRead_V2_Initiator::InitFuncMappingTable },
+	{ FDRMEncryptorSEL, FDRMEncryptorInterfacesNum,  CFDRM_Encryptor_V2_Initiator::InitFuncMappingTable },
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+	{ FDRMPKISEL, FDRMPKIInterfacesNum,  CFDRM_PKI_V2_Initiator::InitFuncMappingTable },
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+	{ FPDWrapperCreatorSEL, FPDWrapperCreatorInterfacesNum,  CFPD_WrapperCreator_V2_Initiator::InitFuncMappingTable },
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V3----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRThumbnailViewSEL, FRThumbnailViewInterfacesNum,  CFR_ThumbnailView_V3_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V4----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRTabBandSEL, FRTabBandInterfacesNum,  CFR_TabBand_V4_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V5----------
+// In file fs_basicImpl.h
+	{ FSUTF8DecoderSEL, FSUTF8DecoderInterfacesNum,  CFS_UTF8Decoder_V5_Initiator::InitFuncMappingTable },
+	{ FSUTF8EncoderSEL, FSUTF8EncoderInterfacesNum,  CFS_UTF8Encoder_V5_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRInternalSEL, FRInternalInterfacesNum,  CFR_Internal_V5_Initiator::InitFuncMappingTable },
+	{ FRSpellCheckSEL, FRSpellCheckInterfacesNum,  CFR_SpellCheck_V5_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRRibbonBarSEL, FRRibbonBarInterfacesNum,  CFR_RibbonBar_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonCategorySEL, FRRibbonCategoryInterfacesNum,  CFR_RibbonCategory_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonPanelSEL, FRRibbonPanelInterfacesNum,  CFR_RibbonPanel_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonElementSEL, FRRibbonElementInterfacesNum,  CFR_RibbonElement_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonButtonSEL, FRRibbonButtonInterfacesNum,  CFR_RibbonButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonEditSEL, FRRibbonEditInterfacesNum,  CFR_RibbonEdit_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonLabelSEL, FRRibbonLabelInterfacesNum,  CFR_RibbonLabel_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonCheckBoxSEL, FRRibbonCheckBoxInterfacesNum,  CFR_RibbonCheckBox_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonRadioButtonSEL, FRRibbonRadioButtonInterfacesNum,  CFR_RibbonRadioButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonComboBoxSEL, FRRibbonComboBoxInterfacesNum,  CFR_RibbonComboBox_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonFontComboBoxSEL, FRRibbonFontComboBoxInterfacesNum,  CFR_RibbonFontComboBox_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonPaletteButtonSEL, FRRibbonPaletteButtonInterfacesNum,  CFR_RibbonPaletteButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonColorButtonSEL, FRRibbonColorButtonInterfacesNum,  CFR_RibbonColorButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonSliderSEL, FRRibbonSliderInterfacesNum,  CFR_RibbonSlider_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonListButtonSEL, FRRibbonListButtonInterfacesNum,  CFR_RibbonListButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonBackStageViewItemSEL, FRRibbonBackStageViewItemInterfacesNum,  CFR_RibbonBackStageViewItem_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleButtonSEL, FRRibbonStyleButtonInterfacesNum,  CFR_RibbonStyleButton_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleListBoxSEL, FRRibbonStyleListBoxInterfacesNum,  CFR_RibbonStyleListBox_V5_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleStaticSEL, FRRibbonStyleStaticInterfacesNum,  CFR_RibbonStyleStatic_V5_Initiator::InitFuncMappingTable },
+	{ FRFormatToolsSEL, FRFormatToolsInterfacesNum,  CFR_FormatTools_V5_Initiator::InitFuncMappingTable },
+	{ FRPropertyToolsSEL, FRPropertyToolsInterfacesNum,  CFR_PropertyTools_V5_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+	{ FRWindowsDIBSEL, FRWindowsDIBInterfacesNum,  CFR_WindowsDIB_V5_Initiator::InitFuncMappingTable },
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRAnnotSEL, FRAnnotInterfacesNum,  CFR_Annot_V5_Initiator::InitFuncMappingTable },
+	{ FRResourcePropertyBoxSEL, FRResourcePropertyBoxInterfacesNum,  CFR_ResourcePropertyBox_V5_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+	{ FPDFXFontEncodingSEL, FPDFXFontEncodingInterfacesNum,  CFPD_FXFontEncoding_V5_Initiator::InitFuncMappingTable },
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V6----------
+// In file fs_basicImpl.h
+	{ FSFileStreamSEL, FSFileStreamInterfacesNum,  CFS_FileStream_V6_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRScrollBarThumbnailViewSEL, FRScrollBarThumbnailViewInterfacesNum,  CFR_ScrollBarThumbnailView_V6_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V7----------
+// In file fs_basicImpl.h
+	{ FSGUIDSEL, FSGUIDInterfacesNum,  CFS_GUID_V7_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRHTMLMgrSEL, FRHTMLMgrInterfacesNum,  CFR_HTMLMgr_V7_Initiator::InitFuncMappingTable },
+	{ FRPanelMgrSEL, FRPanelMgrInterfacesNum,  CFR_PanelMgr_V7_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRFuncBtnSEL, FRFuncBtnInterfacesNum,  CFR_FuncBtn_V7_Initiator::InitFuncMappingTable },
+	{ FRStatusBarSEL, FRStatusBarInterfacesNum,  CFR_StatusBar_V7_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDConnectedInfoSEL, FPDConnectedInfoInterfacesNum,  CFPD_ConnectedInfo_V7_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V8----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRCustomSignatureSEL, FRCustomSignatureInterfacesNum,  CFR_CustomSignature_V8_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V9----------
+// In file fs_basicImpl.h
+	{ FSUUIDSEL, FSUUIDInterfacesNum,  CFS_UUID_V9_Initiator::InitFuncMappingTable },
+	{ FSMapByteStringToPtrSEL, FSMapByteStringToPtrInterfacesNum,  CFS_MapByteStringToPtr_V9_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRCloudLoginProviderSEL, FRCloudLoginProviderInterfacesNum,  CFR_CloudLoginProvider_V9_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRBulbMsgCenterSEL, FRBulbMsgCenterInterfacesNum,  CFR_BulbMsgCenter_V9_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+	{ FPDEPUBSEL, FPDEPUBInterfacesNum,  CFPD_EPUB_V9_Initiator::InitFuncMappingTable },
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V10----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+	{ FOFDCryptoDictSEL, FOFDCryptoDictInterfacesNum,  CFOFD_CryptoDict_V10_Initiator::InitFuncMappingTable },
+	{ FOFDSecurityHandlerSEL, FOFDSecurityHandlerInterfacesNum,  CFOFD_SecurityHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDStdSecurityHandlerSEL, FOFDStdSecurityHandlerInterfacesNum,  CFOFD_StdSecurityHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDStdCertSecurityHandlerSEL, FOFDStdCertSecurityHandlerInterfacesNum,  CFOFD_StdCertSecurityHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDSMSecurityHandlerSEL, FOFDSMSecurityHandlerInterfacesNum,  CFOFD_SMSecurityHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDCryptoHandlerSEL, FOFDCryptoHandlerInterfacesNum,  CFOFD_CryptoHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDStdCryptoHandlerSEL, FOFDStdCryptoHandlerInterfacesNum,  CFOFD_StdCryptoHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDSM4CryptoHandlerSEL, FOFDSM4CryptoHandlerInterfacesNum,  CFOFD_SM4CryptoHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDFileStreamSEL, FOFDFileStreamInterfacesNum,  CFOFD_FileStream_V10_Initiator::InitFuncMappingTable },
+	{ FOFDPauseHandlerSEL, FOFDPauseHandlerInterfacesNum,  CFOFD_PauseHandler_V10_Initiator::InitFuncMappingTable },
+	{ FOFDUIMgrSEL, FOFDUIMgrInterfacesNum,  CFOFD_UIMgr_V10_Initiator::InitFuncMappingTable },
+	{ FOFDDIBAttributeSEL, FOFDDIBAttributeInterfacesNum,  CFOFD_DIBAttribute_V10_Initiator::InitFuncMappingTable },
+	{ FOFDCodeCSEL, FOFDCodeCInterfacesNum,  CFOFD_CodeC_V10_Initiator::InitFuncMappingTable },
+	{ FOFDPrintSettingSEL, FOFDPrintSettingInterfacesNum,  CFOFD_PrintSetting_V10_Initiator::InitFuncMappingTable },
+	{ FOFDSysSEL, FOFDSysInterfacesNum,  CFOFD_Sys_V10_Initiator::InitFuncMappingTable },
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+	{ FOFDPackageSEL, FOFDPackageInterfacesNum,  CFOFD_Package_V10_Initiator::InitFuncMappingTable },
+	{ FOFDParserSEL, FOFDParserInterfacesNum,  CFOFD_Parser_V10_Initiator::InitFuncMappingTable },
+	{ FOFDDocSEL, FOFDDocInterfacesNum,  CFOFD_Doc_V10_Initiator::InitFuncMappingTable },
+	{ FOFDWriteDocSEL, FOFDWriteDocInterfacesNum,  CFOFD_WriteDoc_V10_Initiator::InitFuncMappingTable },
+	{ FOFDCreatorSEL, FOFDCreatorInterfacesNum,  CFOFD_Creator_V10_Initiator::InitFuncMappingTable },
+	{ FOFDPermsSEL, FOFDPermsInterfacesNum,  CFOFD_Perms_V10_Initiator::InitFuncMappingTable },
+	{ FOFDVPrefersSEL, FOFDVPrefersInterfacesNum,  CFOFD_VPrefers_V10_Initiator::InitFuncMappingTable },
+	{ FOFDBookmarksSEL, FOFDBookmarksInterfacesNum,  CFOFD_Bookmarks_V10_Initiator::InitFuncMappingTable },
+	{ FOFDBookmarkSEL, FOFDBookmarkInterfacesNum,  CFOFD_Bookmark_V10_Initiator::InitFuncMappingTable },
+	{ FOFDOutlineSEL, FOFDOutlineInterfacesNum,  CFOFD_Outline_V10_Initiator::InitFuncMappingTable },
+	{ FOFDActionsSEL, FOFDActionsInterfacesNum,  CFOFD_Actions_V10_Initiator::InitFuncMappingTable },
+	{ FOFDActionSEL, FOFDActionInterfacesNum,  CFOFD_Action_V10_Initiator::InitFuncMappingTable },
+	{ FOFDActionGotoSEL, FOFDActionGotoInterfacesNum,  CFOFD_ActionGoto_V10_Initiator::InitFuncMappingTable },
+	{ FOFDActionGotoASEL, FOFDActionGotoAInterfacesNum,  CFOFD_ActionGotoA_V10_Initiator::InitFuncMappingTable },
+	{ FOFDActionRegionSEL, FOFDActionRegionInterfacesNum,  CFOFD_ActionRegion_V10_Initiator::InitFuncMappingTable },
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+	{ FOFDPageSEL, FOFDPageInterfacesNum,  CFOFD_Page_V10_Initiator::InitFuncMappingTable },
+	{ FOFDDestSEL, FOFDDestInterfacesNum,  CFOFD_Dest_V10_Initiator::InitFuncMappingTable },
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+	{ FOFDRenderOptionsSEL, FOFDRenderOptionsInterfacesNum,  CFOFD_RenderOptions_V10_Initiator::InitFuncMappingTable },
+	{ FOFDRenderContextSEL, FOFDRenderContextInterfacesNum,  CFOFD_RenderContext_V10_Initiator::InitFuncMappingTable },
+	{ FOFDRenderDeviceSEL, FOFDRenderDeviceInterfacesNum,  CFOFD_RenderDevice_V10_Initiator::InitFuncMappingTable },
+	{ FOFDProgressiveRendererSEL, FOFDProgressiveRendererInterfacesNum,  CFOFD_ProgressiveRenderer_V10_Initiator::InitFuncMappingTable },
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+	{ FOFDSignSEL, FOFDSignInterfacesNum,  CFOFD_Sign_V10_Initiator::InitFuncMappingTable },
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDWrapperDocSEL, FPDWrapperDocInterfacesNum,  CFPD_WrapperDoc_V10_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+	{ FPDUnencryptedWrapperCreatorSEL, FPDUnencryptedWrapperCreatorInterfacesNum,  CFPD_UnencryptedWrapperCreator_V10_Initiator::InitFuncMappingTable },
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V11----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+	{ FRAppFxNetSEL, FRAppFxNetInterfacesNum,  CFR_AppFxNet_V11_Initiator::InitFuncMappingTable },
+	{ FRInternalFxNetSEL, FRInternalFxNetInterfacesNum,  CFR_InternalFxNet_V11_Initiator::InitFuncMappingTable },
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+	{ FPDColorSeparatorSEL, FPDColorSeparatorInterfacesNum,  CFPD_ColorSeparator_V11_Initiator::InitFuncMappingTable },
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+	{ FPDColorConvertorSEL, FPDColorConvertorInterfacesNum,  CFPD_ColorConvertor_V11_Initiator::InitFuncMappingTable },
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V12----------
+// In file fs_basicImpl.h
+	{ FSImageSEL, FSImageInterfacesNum,  CFS_Image_V12_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRAssistantMgrSEL, FRAssistantMgrInterfacesNum,  CFR_AssistantMgr_V12_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+	{ FPD3dContextSEL, FPD3dContextInterfacesNum,  CFPD_3dContext_V12_Initiator::InitFuncMappingTable },
+	{ FPD3dAnnotDataSEL, FPD3dAnnotDataInterfacesNum,  CFPD_3dAnnotData_V12_Initiator::InitFuncMappingTable },
+	{ FPD3dAnnotData3dArtworkSEL, FPD3dAnnotData3dArtworkInterfacesNum,  CFPD_3dAnnotData3dArtwork_V12_Initiator::InitFuncMappingTable },
+	{ FPD3dSceneSEL, FPD3dSceneInterfacesNum,  CFPD_3dScene_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deAssetSEL, FPD3deAssetInterfacesNum,  CFPD_3deAsset_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deRuntimeSEL, FPD3deRuntimeInterfacesNum,  CFPD_3deRuntime_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deCanvasSEL, FPD3deCanvasInterfacesNum,  CFPD_3deCanvas_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewSEL, FPD3deViewInterfacesNum,  CFPD_3deView_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewRenderModeSEL, FPD3deViewRenderModeInterfacesNum,  CFPD_3deViewRenderMode_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewLightingSchemeSEL, FPD3deViewLightingSchemeInterfacesNum,  CFPD_3deViewLightingScheme_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deCanvasControllerToolSEL, FPD3deCanvasControllerToolInterfacesNum,  CFPD_3deCanvasControllerTool_V12_Initiator::InitFuncMappingTable },
+	{ FPD3dVendorSEL, FPD3dVendorInterfacesNum,  CFPD_3dVendor_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewBackgroundSEL, FPD3deViewBackgroundInterfacesNum,  CFPD_3deViewBackground_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewCameraParamSEL, FPD3deViewCameraParamInterfacesNum,  CFPD_3deViewCameraParam_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewCrossSectionSEL, FPD3deViewCrossSectionInterfacesNum,  CFPD_3deViewCrossSection_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewNodeSEL, FPD3deViewNodeInterfacesNum,  CFPD_3deViewNode_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deMeasureSEL, FPD3deMeasureInterfacesNum,  CFPD_3deMeasure_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deViewMiscOptionsSEL, FPD3deViewMiscOptionsInterfacesNum,  CFPD_3deViewMiscOptions_V12_Initiator::InitFuncMappingTable },
+	{ FPD3deTextProviderSEL, FPD3deTextProviderInterfacesNum,  CFPD_3deTextProvider_V12_Initiator::InitFuncMappingTable },
+	{ FPDScriptHostHostProviderSEL, FPDScriptHostHostProviderInterfacesNum,  CFPD_ScriptHostHostProvider_V12_Initiator::InitFuncMappingTable },
+	{ FPDScript3DEngineSEL, FPDScript3DEngineInterfacesNum,  CFPD_Script3DEngine_V12_Initiator::InitFuncMappingTable },
+	{ FPD3DI18NProviderHandlerSEL, FPD3DI18NProviderHandlerInterfacesNum,  CFPD_3DI18NProviderHandler_V12_Initiator::InitFuncMappingTable },
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V13----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRIReaderSEL, FRIReaderInterfacesNum,  CFR_IReader_PageView_V13_Initiator::InitFuncMappingTable },
+	{ FRIFXSEL, FRIFXInterfacesNum,  CFR_IFX_InputMethod_V13_Initiator::InitFuncMappingTable },
+	{ FRInputMethodHandlerSEL, FRInputMethodHandlerInterfacesNum,  CFR_InputMethodHandler_V13_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRReaderInterformSEL, FRReaderInterformInterfacesNum,  CFR_ReaderInterform_V13_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V14----------
+// In file fs_basicImpl.h
+	{ FSReaderDateTimeSEL, FSReaderDateTimeInterfacesNum,  CFS_ReaderDateTime_V14_Initiator::InitFuncMappingTable },
+	{ FSMonoscaleSEL, FSMonoscaleInterfacesNum,  CFS_Monoscale_V14_Initiator::InitFuncMappingTable },
+	{ FSFloatArraySEL, FSFloatArrayInterfacesNum,  CFS_FloatArray_V14_Initiator::InitFuncMappingTable },
+	{ FSInt32ArraySEL, FSInt32ArrayInterfacesNum,  CFS_Int32Array_V14_Initiator::InitFuncMappingTable },
+	{ FSRegistryManagerSEL, FSRegistryManagerInterfacesNum,  CFS_RegistryManager_V14_Initiator::InitFuncMappingTable },
+	{ FSFloatRectSEL, FSFloatRectInterfacesNum,  CFS_FloatRect_V14_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+	{ FRBrowserManagerSEL, FRBrowserManagerInterfacesNum,  CFR_BrowserManager_V14_Initiator::InitFuncMappingTable },
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRMarkAnnotHandlerSEL, FRMarkAnnotHandlerInterfacesNum,  CFR_MarkAnnotHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRReaderUserMessageHandlerSEL, FRReaderUserMessageHandlerInterfacesNum,  CFR_ReaderUserMessageHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRIFieldMulCopiesNotifySEL, FRIFieldMulCopiesNotifyInterfacesNum,  CFR_IFieldMulCopiesNotify_V14_Initiator::InitFuncMappingTable },
+	{ FRIActionWizardDataSEL, FRIActionWizardDataInterfacesNum,  CFR_IActionWizardData_V14_Initiator::InitFuncMappingTable },
+	{ FRCMapItemNameToDataSEL, FRCMapItemNameToDataInterfacesNum,  CFR_CMapItemNameToData_V14_Initiator::InitFuncMappingTable },
+	{ FRReaderUIMgrSEL, FRReaderUIMgrInterfacesNum,  CFR_ReaderUIMgr_V14_Initiator::InitFuncMappingTable },
+	{ FRReaderThemeSEL, FRReaderThemeInterfacesNum,  CFR_ReaderTheme_V14_Initiator::InitFuncMappingTable },
+	{ FRPluginsMamagerSEL, FRPluginsMamagerInterfacesNum,  CFR_PluginsMamager_V14_Initiator::InitFuncMappingTable },
+	{ FRIReplaceAllNotifySEL, FRIReplaceAllNotifyInterfacesNum,  CFR_IReplaceAllNotify_V14_Initiator::InitFuncMappingTable },
+	{ FRIFindReplaceMgrSEL, FRIFindReplaceMgrInterfacesNum,  CFR_IFindReplaceMgr_V14_Initiator::InitFuncMappingTable },
+	{ FRPDFBitmapSEL, FRPDFBitmapInterfacesNum,  CFR_PDFBitmap_V14_Initiator::InitFuncMappingTable },
+	{ FRAccessibilitySEL, FRAccessibilityInterfacesNum,  CFR_Accessibility_V14_Initiator::InitFuncMappingTable },
+	{ FRAppUIStyleSEL, FRAppUIStyleInterfacesNum,  CFR_AppUIStyle_V14_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRRibbonStyleRadioBoxSEL, FRRibbonStyleRadioBoxInterfacesNum,  CFR_RibbonStyleRadioBox_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleCheckBoxSEL, FRRibbonStyleCheckBoxInterfacesNum,  CFR_RibbonStyleCheckBox_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleEditSEL, FRRibbonStyleEditInterfacesNum,  CFR_RibbonStyleEdit_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleLinkButtonSEL, FRRibbonStyleLinkButtonInterfacesNum,  CFR_RibbonStyleLinkButton_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleSliderCtrlSEL, FRRibbonStyleSliderCtrlInterfacesNum,  CFR_RibbonStyleSliderCtrl_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleColorButtonSEL, FRRibbonStyleColorButtonInterfacesNum,  CFR_RibbonStyleColorButton_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleComboBoxSEL, FRRibbonStyleComboBoxInterfacesNum,  CFR_RibbonStyleComboBox_V14_Initiator::InitFuncMappingTable },
+	{ FRRibbonStyleFontComboBoxSEL, FRRibbonStyleFontComboBoxInterfacesNum,  CFR_RibbonStyleFontComboBox_V14_Initiator::InitFuncMappingTable },
+	{ FRStyleGalleryCtrlSEL, FRStyleGalleryCtrlInterfacesNum,  CFR_StyleGalleryCtrl_V14_Initiator::InitFuncMappingTable },
+	{ FRStyleSpinBtnCtrlSEL, FRStyleSpinBtnCtrlInterfacesNum,  CFR_StyleSpinBtnCtrl_V14_Initiator::InitFuncMappingTable },
+	{ FRStyleComboGalleryCtrlSEL, FRStyleComboGalleryCtrlInterfacesNum,  CFR_StyleComboGalleryCtrl_V14_Initiator::InitFuncMappingTable },
+	{ FRStyleMenuButtonSEL, FRStyleMenuButtonInterfacesNum,  CFR_StyleMenuButton_V14_Initiator::InitFuncMappingTable },
+	{ FRCommonControlSEL, FRCommonControlInterfacesNum,  CFR_CommonControl_V14_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRUndoItemCreateWidgetSEL, FRUndoItemCreateWidgetInterfacesNum,  CFR_UndoItemCreateWidget_V14_Initiator::InitFuncMappingTable },
+	{ FRCRSAStampSEL, FRCRSAStampInterfacesNum,  CFR_CRSAStamp_V14_Initiator::InitFuncMappingTable },
+	{ FRMarkupAnnotSEL, FRMarkupAnnotInterfacesNum,  CFR_MarkupAnnot_V14_Initiator::InitFuncMappingTable },
+	{ FRMarkupPopupSEL, FRMarkupPopupInterfacesNum,  CFR_MarkupPopup_V14_Initiator::InitFuncMappingTable },
+	{ FRMarkupPanelSEL, FRMarkupPanelInterfacesNum,  CFR_MarkupPanel_V14_Initiator::InitFuncMappingTable },
+	{ FRCRSASStampAnnotSEL, FRCRSASStampAnnotInterfacesNum,  CFR_CRSASStampAnnot_V14_Initiator::InitFuncMappingTable },
+	{ FREncryptPermissonSEL, FREncryptPermissonInterfacesNum,  CFR_EncryptPermisson_V14_Initiator::InitFuncMappingTable },
+	{ FRCSGCertFileManageSEL, FRCSGCertFileManageInterfacesNum,  CFR_CSGCertFileManage_V14_Initiator::InitFuncMappingTable },
+	{ FRCSGSEL, FRCSGInterfacesNum,  CFR_CSG_CreateCert_V14_Initiator::InitFuncMappingTable },
+	{ FRPageSEL, FRPageInterfacesNum,  CFR_Page_V14_Initiator::InitFuncMappingTable },
+	{ FRIBAAnnotFillerSEL, FRIBAAnnotFillerInterfacesNum,  CFR_IBAAnnotFiller_V14_Initiator::InitFuncMappingTable },
+	{ FRIBAAnnotDesignerSEL, FRIBAAnnotDesignerInterfacesNum,  CFR_IBAAnnotDesigner_V14_Initiator::InitFuncMappingTable },
+	{ FRCBFInterFormSEL, FRCBFInterFormInterfacesNum,  CFR_CBFInterForm_V14_Initiator::InitFuncMappingTable },
+	{ FRBFFormNotifySEL, FRBFFormNotifyInterfacesNum,  CFR_BFFormNotify_V14_Initiator::InitFuncMappingTable },
+	{ FRBFAnnotHandlerSEL, FRBFAnnotHandlerInterfacesNum,  CFR_BFAnnotHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRBaseFormSEL, FRBaseFormInterfacesNum,  CFR_BaseForm_V14_Initiator::InitFuncMappingTable },
+	{ FRIFormDesignerNotifySEL, FRIFormDesignerNotifyInterfacesNum,  CFR_IFormDesignerNotify_V14_Initiator::InitFuncMappingTable },
+	{ FRCBFWidgetSEL, FRCBFWidgetInterfacesNum,  CFR_CBFWidget_V14_Initiator::InitFuncMappingTable },
+	{ FRIBFSimpleFromPropertiesSEL, FRIBFSimpleFromPropertiesInterfacesNum,  CFR_IBFSimpleFromProperties_V14_Initiator::InitFuncMappingTable },
+	{ FRSGRDNSEL, FRSGRDNInterfacesNum,  CFR_SGRDN_V14_Initiator::InitFuncMappingTable },
+	{ FRSGCERTIFICATESEL, FRSGCERTIFICATEInterfacesNum,  CFR_SGCERTIFICATE_INFO_V14_Initiator::InitFuncMappingTable },
+	{ FRSGSEEDVALUESEL, FRSGSEEDVALUEInterfacesNum,  CFR_SGSEEDVALUE_INFO_V14_Initiator::InitFuncMappingTable },
+	{ FRSGBaseHandlerSEL, FRSGBaseHandlerInterfacesNum,  CFR_SGBaseHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRIClipBoardSEL, FRIClipBoardInterfacesNum,  CFR_IClipBoard_V14_Initiator::InitFuncMappingTable },
+	{ FRCCBAnnotationSEL, FRCCBAnnotationInterfacesNum,  CFR_CCBAnnotation_V14_Initiator::InitFuncMappingTable },
+	{ FRISpellCheckSEL, FRISpellCheckInterfacesNum,  CFR_ISpellCheck_V14_Initiator::InitFuncMappingTable },
+	{ FRCJavaScriptEditerSEL, FRCJavaScriptEditerInterfacesNum,  CFR_CJavaScriptEditer_V14_Initiator::InitFuncMappingTable },
+	{ FRIBAImageSourceSEL, FRIBAImageSourceInterfacesNum,  CFR_IBAImageSource_V14_Initiator::InitFuncMappingTable },
+	{ FRCBAFigureRecognitionSEL, FRCBAFigureRecognitionInterfacesNum,  CFR_CBAFigureRecognition_V14_Initiator::InitFuncMappingTable },
+	{ FRAnnotObserverSEL, FRAnnotObserverInterfacesNum,  CFR_AnnotObserver_V14_Initiator::InitFuncMappingTable },
+	{ FRDocumentObserverSEL, FRDocumentObserverInterfacesNum,  CFR_DocumentObserver_V14_Initiator::InitFuncMappingTable },
+	{ FRInnerContentProviderSEL, FRInnerContentProviderInterfacesNum,  CFR_InnerContentProvider_V14_Initiator::InitFuncMappingTable },
+	{ FRIFXPDFAInterfaceSEL, FRIFXPDFAInterfaceInterfacesNum,  CFR_IFXPDFAInterface_V14_Initiator::InitFuncMappingTable },
+	{ FRIConvertToPDFSEL, FRIConvertToPDFInterfacesNum,  CFR_IConvertToPDF_V14_Initiator::InitFuncMappingTable },
+	{ FRITagePDFSEL, FRITagePDFInterfacesNum,  CFR_ITagePDF_V14_Initiator::InitFuncMappingTable },
+	{ FRTextPageSEL, FRTextPageInterfacesNum,  CFR_TextPage_V14_Initiator::InitFuncMappingTable },
+	{ FRISignatureCheckSEL, FRISignatureCheckInterfacesNum,  CFR_ISignatureCheck_V14_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+	{ FRSystemHandlerSEL, FRSystemHandlerInterfacesNum,  CFR_SystemHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRCTBLogFontsSEL, FRCTBLogFontsInterfacesNum,  CFR_CTBLogFonts_V14_Initiator::InitFuncMappingTable },
+	{ FRTBSYSFONTDATASEL, FRTBSYSFONTDATAInterfacesNum,  CFR_TBSYSFONTDATA_V14_Initiator::InitFuncMappingTable },
+	{ FRITBSysFontSEL, FRITBSysFontInterfacesNum,  CFR_ITBSysFont_V14_Initiator::InitFuncMappingTable },
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRRedactionSEL, FRRedactionInterfacesNum,  CFR_Redaction_V14_Initiator::InitFuncMappingTable },
+	{ FRReaderSEL, FRReaderInterfacesNum,  CFR_Reader_DispViewerEx_V14_Initiator::InitFuncMappingTable },
+	{ FRIReaderDispViewerHandlerSEL, FRIReaderDispViewerHandlerInterfacesNum,  CFR_IReaderDispViewerHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRIPDFViewerEventHandlerSEL, FRIPDFViewerEventHandlerInterfacesNum,  CFR_IPDFViewerEventHandler_V14_Initiator::InitFuncMappingTable },
+	{ FRToolFormatMgrSEL, FRToolFormatMgrInterfacesNum,  CFR_ToolFormatMgr_V14_Initiator::InitFuncMappingTable },
+	{ FRTextSelectedDataSEL, FRTextSelectedDataInterfacesNum,  CFR_TextSelectedData_V14_Initiator::InitFuncMappingTable },
+	{ FRIRPPropertySourceSEL, FRIRPPropertySourceInterfacesNum,  CFR_IRPPropertySource_V14_Initiator::InitFuncMappingTable },
+	{ FRLayerOperationSEL, FRLayerOperationInterfacesNum,  CFR_LayerOperation_V14_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+	{ FPDCEditObjectSEL, FPDCEditObjectInterfacesNum,  CFPD_CEditObject_V14_Initiator::InitFuncMappingTable },
+	{ FPDIJoinSplitSEL, FPDIJoinSplitInterfacesNum,  CFPD_IJoinSplit_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchupSEL, FPDITouchupInterfacesNum,  CFPD_ITouchup_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchupManagerSEL, FPDITouchupManagerInterfacesNum,  CFPD_ITouchupManager_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchUndoItemSEL, FPDITouchUndoItemInterfacesNum,  CFPD_ITouchUndoItem_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchPopupMenuSEL, FPDITouchPopupMenuInterfacesNum,  CFPD_ITouchPopupMenu_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchProgressBarSEL, FPDITouchProgressBarInterfacesNum,  CFPD_ITouchProgressBar_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchOperationNotifySEL, FPDITouchOperationNotifyInterfacesNum,  CFPD_ITouchOperationNotify_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchUndoHandlerSEL, FPDITouchUndoHandlerInterfacesNum,  CFPD_ITouchUndoHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchTextFormatHandlerSEL, FPDITouchTextFormatHandlerInterfacesNum,  CFPD_ITouchTextFormatHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchProviderSEL, FPDITouchProviderInterfacesNum,  CFPD_ITouchProvider_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchupSpellCheckHandlerSEL, FPDITouchupSpellCheckHandlerInterfacesNum,  CFPD_ITouchupSpellCheckHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDIFindReplaceSEL, FPDIFindReplaceInterfacesNum,  CFPD_IFindReplace_V14_Initiator::InitFuncMappingTable },
+	{ FPDITouchupSpellCheckSEL, FPDITouchupSpellCheckInterfacesNum,  CFPD_ITouchupSpellCheck_V14_Initiator::InitFuncMappingTable },
+	{ FPDIFindReplaceHandlerSEL, FPDIFindReplaceHandlerInterfacesNum,  CFPD_IFindReplaceHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDICollectSensorHandlerSEL, FPDICollectSensorHandlerInterfacesNum,  CFPD_ICollectSensorHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDPathObjectUtilsSEL, FPDPathObjectUtilsInterfacesNum,  CFPD_PathObjectUtils_V14_Initiator::InitFuncMappingTable },
+	{ FPDShadingObjectUtilsSEL, FPDShadingObjectUtilsInterfacesNum,  CFPD_ShadingObjectUtils_V14_Initiator::InitFuncMappingTable },
+	{ FPDPathEditorSEL, FPDPathEditorInterfacesNum,  CFPD_PathEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDShadingEditorSEL, FPDShadingEditorInterfacesNum,  CFPD_ShadingEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDTextEditorSEL, FPDTextEditorInterfacesNum,  CFPD_TextEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDTextObjectUtilsSEL, FPDTextObjectUtilsInterfacesNum,  CFPD_TextObjectUtils_V14_Initiator::InitFuncMappingTable },
+	{ FPDGraphicObjectSEL, FPDGraphicObjectInterfacesNum,  CFPD_GraphicObject_V14_Initiator::InitFuncMappingTable },
+	{ FPDGraphicEditorSEL, FPDGraphicEditorInterfacesNum,  CFPD_GraphicEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDGraphicObjectUtilsSEL, FPDGraphicObjectUtilsInterfacesNum,  CFPD_GraphicObjectUtils_V14_Initiator::InitFuncMappingTable },
+	{ FPDImageEditorSEL, FPDImageEditorInterfacesNum,  CFPD_ImageEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDIPageEditorSEL, FPDIPageEditorInterfacesNum,  CFPD_IPageEditor_V14_Initiator::InitFuncMappingTable },
+	{ FPDIUndoItemSEL, FPDIUndoItemInterfacesNum,  CFPD_IUndoItem_V14_Initiator::InitFuncMappingTable },
+	{ FPDIClipboardSEL, FPDIClipboardInterfacesNum,  CFPD_IClipboard_V14_Initiator::InitFuncMappingTable },
+	{ FPDIPopupMenuSEL, FPDIPopupMenuInterfacesNum,  CFPD_IPopupMenu_V14_Initiator::InitFuncMappingTable },
+	{ FPDITipSEL, FPDITipInterfacesNum,  CFPD_ITip_V14_Initiator::InitFuncMappingTable },
+	{ FPDIOperationNotifySEL, FPDIOperationNotifyInterfacesNum,  CFPD_IOperationNotify_V14_Initiator::InitFuncMappingTable },
+	{ FPDIPublicOptionDataSEL, FPDIPublicOptionDataInterfacesNum,  CFPD_IPublicOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIBaseBrushOptionDataSEL, FPDIBaseBrushOptionDataInterfacesNum,  CFPD_IBaseBrushOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIBrushOptionDataSEL, FPDIBrushOptionDataInterfacesNum,  CFPD_IBrushOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIEraserOptionDataSEL, FPDIEraserOptionDataInterfacesNum,  CFPD_IEraserOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIMagicWandOptionDataSEL, FPDIMagicWandOptionDataInterfacesNum,  CFPD_IMagicWandOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIDodgeOptionDataSEL, FPDIDodgeOptionDataInterfacesNum,  CFPD_IDodgeOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIBurnOptionDataSEL, FPDIBurnOptionDataInterfacesNum,  CFPD_IBurnOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIEyedropperDataSEL, FPDIEyedropperDataInterfacesNum,  CFPD_IEyedropperData_V14_Initiator::InitFuncMappingTable },
+	{ FPDICloneStampDataSEL, FPDICloneStampDataInterfacesNum,  CFPD_ICloneStampData_V14_Initiator::InitFuncMappingTable },
+	{ FPDIPaintBucketOptionDataSEL, FPDIPaintBucketOptionDataInterfacesNum,  CFPD_IPaintBucketOptionData_V14_Initiator::InitFuncMappingTable },
+	{ FPDISpotHealingBrushDataSEL, FPDISpotHealingBrushDataInterfacesNum,  CFPD_ISpotHealingBrushData_V14_Initiator::InitFuncMappingTable },
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+	{ FOFDFontmapperSEL, FOFDFontmapperInterfacesNum,  CFOFD_Fontmapper_V14_Initiator::InitFuncMappingTable },
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+	{ FPD3DCompositionProviderSEL, FPD3DCompositionProviderInterfacesNum,  CFPD_3DCompositionProvider_V14_Initiator::InitFuncMappingTable },
+	{ FPDBoundingBoxSEL, FPDBoundingBoxInterfacesNum,  CFPD_BoundingBox_V14_Initiator::InitFuncMappingTable },
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDCertStoreSEL, FPDCertStoreInterfacesNum,  CFPD_CertStore_V14_Initiator::InitFuncMappingTable },
+	{ FPDPageLabelSEL, FPDPageLabelInterfacesNum,  CFPD_PageLabel_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignCertSEL, FPDSignCertInterfacesNum,  CFPD_SignCert_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignCertHandlerSEL, FPDSignCertHandlerInterfacesNum,  CFPD_SignCertHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDCertMethodSEL, FPDCertMethodInterfacesNum,  CFPD_CertMethod_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignCRLSEL, FPDSignCRLInterfacesNum,  CFPD_SignCRL_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignOCSPSEL, FPDSignOCSPInterfacesNum,  CFPD_SignOCSP_V14_Initiator::InitFuncMappingTable },
+	{ FPDCGWSignDataRevoInfoSEL, FPDCGWSignDataRevoInfoInterfacesNum,  CFPD_CGWSignDataRevoInfo_V14_Initiator::InitFuncMappingTable },
+	{ FPDReovcationProgressCallBackSEL, FPDReovcationProgressCallBackInterfacesNum,  CFPD_ReovcationProgressCallBack_V14_Initiator::InitFuncMappingTable },
+	{ FPDCHECKREVOINFODATASEL, FPDCHECKREVOINFODATAInterfacesNum,  CFPD_CHECKREVOINFODATA_V14_Initiator::InitFuncMappingTable },
+	{ FPDCHECKDataSEL, FPDCHECKDataInterfacesNum,  CFPD_CHECKData_V14_Initiator::InitFuncMappingTable },
+	{ FPDVerifyRevokeSEL, FPDVerifyRevokeInterfacesNum,  CFPD_VerifyRevoke_V14_Initiator::InitFuncMappingTable },
+	{ FPDVRISEL, FPDVRIInterfacesNum,  CFPD_VRI_V14_Initiator::InitFuncMappingTable },
+	{ FPDDSSSEL, FPDDSSInterfacesNum,  CFPD_DSS_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureVerifyResultSEL, FPDSignatureVerifyResultInterfacesNum,  CFPD_SignatureVerifyResult_V14_Initiator::InitFuncMappingTable },
+	{ FPDTrustedCertStoreSEL, FPDTrustedCertStoreInterfacesNum,  CFPD_TrustedCertStore_V14_Initiator::InitFuncMappingTable },
+	{ FPDLtvVerifierSEL, FPDLtvVerifierInterfacesNum,  CFPD_LtvVerifier_V14_Initiator::InitFuncMappingTable },
+	{ FPDSigModifyListSEL, FPDSigModifyListInterfacesNum,  CFPD_SigModifyList_V14_Initiator::InitFuncMappingTable },
+	{ FPDIncreSaveModifyDetectorSEL, FPDIncreSaveModifyDetectorInterfacesNum,  CFPD_IncreSaveModifyDetector_V14_Initiator::InitFuncMappingTable },
+	{ FPDPermissionResultSEL, FPDPermissionResultInterfacesNum,  CFPD_PermissionResult_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureEditSEL, FPDSignatureEditInterfacesNum,  CFPD_SignatureEdit_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureSEL, FPDSignatureInterfacesNum,  CFPD_Signature_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureSignSEL, FPDSignatureSignInterfacesNum,  CFPD_SignatureSign_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureVerifySEL, FPDSignatureVerifyInterfacesNum,  CFPD_SignatureVerify_V14_Initiator::InitFuncMappingTable },
+	{ FPDTimeStampServerSEL, FPDTimeStampServerInterfacesNum,  CFPD_TimeStampServer_V14_Initiator::InitFuncMappingTable },
+	{ FPDTimeStampServerMgrSEL, FPDTimeStampServerMgrInterfacesNum,  CFPD_TimeStampServerMgr_V14_Initiator::InitFuncMappingTable },
+	{ FPDSGBufferSEL, FPDSGBufferInterfacesNum,  CFPD_SGBuffer_V14_Initiator::InitFuncMappingTable },
+	{ FPDCertVerifyCallBackSEL, FPDCertVerifyCallBackInterfacesNum,  CFPD_CertVerifyCallBack_V14_Initiator::InitFuncMappingTable },
+	{ FPDCheckDataTemplateSEL, FPDCheckDataTemplateInterfacesNum,  CFPD_CheckDataTemplate_V14_Initiator::InitFuncMappingTable },
+	{ FPDWinDefaultHandlerSEL, FPDWinDefaultHandlerInterfacesNum,  CFPD_WinDefaultHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDCertPolicesDataSEL, FPDCertPolicesDataInterfacesNum,  CFPD_CertPolicesData_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureHandlerSEL, FPDSignatureHandlerInterfacesNum,  CFPD_SignatureHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDSignatureHandlerMgrSEL, FPDSignatureHandlerMgrInterfacesNum,  CFPD_SignatureHandlerMgr_V14_Initiator::InitFuncMappingTable },
+	{ FPDResponseSEL, FPDResponseInterfacesNum,  CFPD_Response_V14_Initiator::InitFuncMappingTable },
+	{ FPDRevocationHandlerSEL, FPDRevocationHandlerInterfacesNum,  CFPD_RevocationHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDDownloadHandlerSEL, FPDDownloadHandlerInterfacesNum,  CFPD_DownloadHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDSGCLIENTDATASEL, FPDSGCLIENTDATAInterfacesNum,  CFPD_SGCLIENTDATA_V14_Initiator::InitFuncMappingTable },
+	{ FPDMODIFYDATASEL, FPDMODIFYDATAInterfacesNum,  CFPD_MODIFYDATA_V14_Initiator::InitFuncMappingTable },
+	{ FPDXFADocViewSEL, FPDXFADocViewInterfacesNum,  CFPD_XFADocView_V14_Initiator::InitFuncMappingTable },
+	{ FPDIXFAPageViewSEL, FPDIXFAPageViewInterfacesNum,  CFPD_IXFAPageView_V14_Initiator::InitFuncMappingTable },
+	{ FPDCXFAWidgetAccSEL, FPDCXFAWidgetAccInterfacesNum,  CFPD_CXFAWidgetAcc_V14_Initiator::InitFuncMappingTable },
+	{ FPDIXFAWidgetHandlerSEL, FPDIXFAWidgetHandlerInterfacesNum,  CFPD_IXFAWidgetHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDIXFAWidgetIteratorSEL, FPDIXFAWidgetIteratorInterfacesNum,  CFPD_IXFAWidgetIterator_V14_Initiator::InitFuncMappingTable },
+	{ FPDIXFAWidgetAccIteratorSEL, FPDIXFAWidgetAccIteratorInterfacesNum,  CFPD_IXFAWidgetAccIterator_V14_Initiator::InitFuncMappingTable },
+	{ FPDCXFAEventParamSEL, FPDCXFAEventParamInterfacesNum,  CFPD_CXFAEventParam_V14_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+	{ FPDStandardCryptoHandlerSEL, FPDStandardCryptoHandlerInterfacesNum,  CFPD_StandardCryptoHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDFipsStandardCryptoHandlerSEL, FPDFipsStandardCryptoHandlerInterfacesNum,  CFPD_FipsStandardCryptoHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDSimpleParserSEL, FPDSimpleParserInterfacesNum,  CFPD_SimpleParser_V14_Initiator::InitFuncMappingTable },
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+	{ FPDWinBitmapDeviceSEL, FPDWinBitmapDeviceInterfacesNum,  CFPD_WinBitmapDevice_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLImageSEL, FPDCPWLImageInterfacesNum,  CFPD_CPWLImage_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLLabelSEL, FPDCPWLLabelInterfacesNum,  CFPD_CPWLLabel_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLTimerHandlerSEL, FPDCPWLTimerHandlerInterfacesNum,  CFPD_CPWLTimerHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLFocusHandlerSEL, FPDCPWLFocusHandlerInterfacesNum,  CFPD_CPWLFocusHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLProviderHandlerSEL, FPDCPWLProviderHandlerInterfacesNum,  CFPD_CPWLProviderHandler_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLWndSEL, FPDCPWLWndInterfacesNum,  CFPD_CPWLWnd_V14_Initiator::InitFuncMappingTable },
+	{ FPDCPWLUtilsSEL, FPDCPWLUtilsInterfacesNum,  CFPD_CPWLUtils_V14_Initiator::InitFuncMappingTable },
+	{ FPDColorFSEL, FPDColorFInterfacesNum,  CFPD_ColorF_V14_Initiator::InitFuncMappingTable },
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+	{ FPDOutputPreviewSEL, FPDOutputPreviewInterfacesNum,  CFPD_OutputPreview_V14_Initiator::InitFuncMappingTable },
+	{ FPDImageSetParamSEL, FPDImageSetParamInterfacesNum,  CFPD_ImageSetParam_V14_Initiator::InitFuncMappingTable },
+	{ FPDType3FontDictSEL, FPDType3FontDictInterfacesNum,  CFPD_Type3FontDict_V14_Initiator::InitFuncMappingTable },
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+	{ FPDStandardLinearizationSEL, FPDStandardLinearizationInterfacesNum,  CFPD_StandardLinearization_V14_Initiator::InitFuncMappingTable },
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V15----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRFormTextFindSEL, FRFormTextFindInterfacesNum,  CFR_FormTextFind_V15_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+	{ FPDFlattenSEL, FPDFlattenInterfacesNum,  CFPD_Flatten_V15_Initiator::InitFuncMappingTable },
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+	{ FPD3DFRMConfigurationSEL, FPD3DFRMConfigurationInterfacesNum,  CFPD_3DFRMConfiguration_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMInstanceSEL, FPD3DFRMInstanceInterfacesNum,  CFPD_3DFRMInstance_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DInstanceSEL, FPD3DInstanceInterfacesNum,  CFPD_3DInstance_V15_Initiator::InitFuncMappingTable },
+	{ FPD3dAnnotDataRichMediaSEL, FPD3dAnnotDataRichMediaInterfacesNum,  CFPD_3dAnnotDataRichMedia_V15_Initiator::InitFuncMappingTable },
+	{ FPD3deAnimationStyleSEL, FPD3deAnimationStyleInterfacesNum,  CFPD_3deAnimationStyle_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMWindowDimenSEL, FPD3DFRMWindowDimenInterfacesNum,  CFPD_3DFRMWindowDimen_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMWindowPosSEL, FPD3DFRMWindowPosInterfacesNum,  CFPD_3DFRMWindowPos_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMWindowSEL, FPD3DFRMWindowInterfacesNum,  CFPD_3DFRMWindow_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMPresentationSEL, FPD3DFRMPresentationInterfacesNum,  CFPD_3DFRMPresentation_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMActivationSEL, FPD3DFRMActivationInterfacesNum,  CFPD_3DFRMActivation_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMActivation2SEL, FPD3DFRMActivation2InterfacesNum,  CFPD_3DFRMActivation2_V15_Initiator::InitFuncMappingTable },
+	{ FPD3DFRMDeactivationSEL, FPD3DFRMDeactivationInterfacesNum,  CFPD_3DFRMDeactivation_V15_Initiator::InitFuncMappingTable },
+	{ FPD3dCustomMenuItemDataSEL, FPD3dCustomMenuItemDataInterfacesNum,  CFPD_3dCustomMenuItemData_V15_Initiator::InitFuncMappingTable },
+	{ FPD3deSpriteDataSEL, FPD3deSpriteDataInterfacesNum,  CFPD_3deSpriteData_V15_Initiator::InitFuncMappingTable },
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+	{ FPDSystemHanlerSEL, FPDSystemHanlerInterfacesNum,  CFPD_SystemHanler_V15_Initiator::InitFuncMappingTable },
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V16----------
+// In file fs_basicImpl.h
+	{ FSCORLORSEL, FSCORLORInterfacesNum,  CFS_CORLOR_V16_Initiator::InitFuncMappingTable },
+	{ FSGLOGSEL, FSGLOGInterfacesNum,  CFS_GLOG_V16_Initiator::InitFuncMappingTable },
+	{ FSCCodecSEL, FSCCodecInterfacesNum,  CFS_CCodec_ModuleMgr_V16_Initiator::InitFuncMappingTable },
+	{ FSSYSCommonMethodSEL, FSSYSCommonMethodInterfacesNum,  CFS_SYSCommonMethod_V16_Initiator::InitFuncMappingTable },
+	{ FSDIBSourceSEL, FSDIBSourceInterfacesNum,  CFS_DIBSource_V16_Initiator::InitFuncMappingTable },
+	{ FSDIBAttributeSEL, FSDIBAttributeInterfacesNum,  CFS_DIBAttribute_V16_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRUIMgrSEL, FRUIMgrInterfacesNum,  CFR_UIMgr_V16_Initiator::InitFuncMappingTable },
+	{ FRContainerFrmMgrHandlerSEL, FRContainerFrmMgrHandlerInterfacesNum,  CFR_ContainerFrmMgrHandler_V16_Initiator::InitFuncMappingTable },
+	{ FRContainerFrmMgrSEL, FRContainerFrmMgrInterfacesNum,  CFR_ContainerFrmMgr_V16_Initiator::InitFuncMappingTable },
+	{ FRPrintProviderSEL, FRPrintProviderInterfacesNum,  CFR_PrintProvider_V16_Initiator::InitFuncMappingTable },
+	{ FRWndProviderSEL, FRWndProviderInterfacesNum,  CFR_WndProvider_V16_Initiator::InitFuncMappingTable },
+	{ FRGlobalDataSEL, FRGlobalDataInterfacesNum,  CFR_GlobalData_V16_Initiator::InitFuncMappingTable },
+	{ FRHandlerDataTypeSEL, FRHandlerDataTypeInterfacesNum,  CFR_HandlerDataType_V16_Initiator::InitFuncMappingTable },
+	{ FRMuCopyDataSEL, FRMuCopyDataInterfacesNum,  CFR_MuCopyData_V16_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRTextLinkInfoSEL, FRTextLinkInfoInterfacesNum,  CFR_TextLinkInfo_V16_Initiator::InitFuncMappingTable },
+	{ FRTextLinkMgrSEL, FRTextLinkMgrInterfacesNum,  CFR_TextLinkMgr_V16_Initiator::InitFuncMappingTable },
+	{ FRSelectedImageInfoSEL, FRSelectedImageInfoInterfacesNum,  CFR_SelectedImageInfo_V16_Initiator::InitFuncMappingTable },
+	{ FRContentObjectSEL, FRContentObjectInterfacesNum,  CFR_ContentObject_V16_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+	{ FRPDFVerwerContentProviderExSEL, FRPDFVerwerContentProviderExInterfacesNum,  CFR_PDFVerwerContentProviderEx_V16_Initiator::InitFuncMappingTable },
+	{ FRPDFViewerSEL, FRPDFViewerInterfacesNum,  CFR_PDFViewer_V16_Initiator::InitFuncMappingTable },
+	{ FRPDFViewerPageSEL, FRPDFViewerPageInterfacesNum,  CFR_PDFViewerPage_V16_Initiator::InitFuncMappingTable },
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+	{ FPDGetBaseSEL, FPDGetBaseInterfacesNum,  CFPD_GetBase_V16_Initiator::InitFuncMappingTable },
+	{ FPDPageImageCompressSEL, FPDPageImageCompressInterfacesNum,  CFPD_PageImageCompress_V16_Initiator::InitFuncMappingTable },
+	{ FPDImageInfoSEL, FPDImageInfoInterfacesNum,  CFPD_ImageInfo_V16_Initiator::InitFuncMappingTable },
+	{ FPDImageCompressSEL, FPDImageCompressInterfacesNum,  CFPD_ImageCompress_V16_Initiator::InitFuncMappingTable },
+	{ FPDImageToPDFDocSEL, FPDImageToPDFDocInterfacesNum,  CFPD_ImageToPDFDoc_V16_Initiator::InitFuncMappingTable },
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+	{ FPDCleanupSEL, FPDCleanupInterfacesNum,  CFPD_Cleanup_V16_Initiator::InitFuncMappingTable },
+	{ FPDDiscardObjsSEL, FPDDiscardObjsInterfacesNum,  CFPD_DiscardObjs_V16_Initiator::InitFuncMappingTable },
+	{ FPDDiscardUserDataSEL, FPDDiscardUserDataInterfacesNum,  CFPD_DiscardUserData_V16_Initiator::InitFuncMappingTable },
+	{ FPDOptimizerSEL, FPDOptimizerInterfacesNum,  CFPD_Optimizer_V16_Initiator::InitFuncMappingTable },
+	{ FPDUnEmbeddedFontSEL, FPDUnEmbeddedFontInterfacesNum,  CFPD_UnEmbeddedFont_V16_Initiator::InitFuncMappingTable },
+	{ FPDSanitizeSEL, FPDSanitizeInterfacesNum,  CFPD_Sanitize_V16_Initiator::InitFuncMappingTable },
+	{ FPDOptimizerProviderSEL, FPDOptimizerProviderInterfacesNum,  CFPD_OptimizerProvider_V16_Initiator::InitFuncMappingTable },
+	{ FPDOptimizerOptionsSEL, FPDOptimizerOptionsInterfacesNum,  CFPD_OptimizerOptions_V16_Initiator::InitFuncMappingTable },
+	{ FPDSanitizeProviderSEL, FPDSanitizeProviderInterfacesNum,  CFPD_SanitizeProvider_V16_Initiator::InitFuncMappingTable },
+	{ FPDFlattenProviderSEL, FPDFlattenProviderInterfacesNum,  CFPD_FlattenProvider_V16_Initiator::InitFuncMappingTable },
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+	{ FPDIExternalImageEditorHandlerSEL, FPDIExternalImageEditorHandlerInterfacesNum,  CFPD_IExternalImageEditorHandler_V16_Initiator::InitFuncMappingTable },
+	{ FPDImageObjectUtilsSEL, FPDImageObjectUtilsInterfacesNum,  CFPD_ImageObjectUtils_V16_Initiator::InitFuncMappingTable },
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+	{ FPDPortfolioSEL, FPDPortfolioInterfacesNum,  CFPD_Portfolio_V16_Initiator::InitFuncMappingTable },
+	{ FPDSCHEMASEL, FPDSCHEMAInterfacesNum,  CFPD_SCHEMA_V16_Initiator::InitFuncMappingTable },
+	{ FPDCONFIGADDSEL, FPDCONFIGADDInterfacesNum,  CFPD_CONFIGADD_FILE_V16_Initiator::InitFuncMappingTable },
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+	{ FPDPreflightResultSEL, FPDPreflightResultInterfacesNum,  CFPD_PreflightResult_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightEngineSEL, FPDPreflightEngineInterfacesNum,  CFPD_PreflightEngine_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightPlateNameElementSEL, FPDPreflightPlateNameElementInterfacesNum,  CFPD_PreflightPlateNameElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightICCProfileElementSEL, FPDPreflightICCProfileElementInterfacesNum,  CFPD_PreflightICCProfileElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightColorspaceElementSEL, FPDPreflightColorspaceElementInterfacesNum,  CFPD_PreflightColorspaceElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightImageInfoSEL, FPDPreflightImageInfoInterfacesNum,  CFPD_PreflightImageInfo_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightFontElementSEL, FPDPreflightFontElementInterfacesNum,  CFPD_PreflightFontElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightShadeElementSEL, FPDPreflightShadeElementInterfacesNum,  CFPD_PreflightShadeElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightFormXObjetElementSEL, FPDPreflightFormXObjetElementInterfacesNum,  CFPD_PreflightFormXObjetElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightReportElementSEL, FPDPreflightReportElementInterfacesNum,  CFPD_PreflightReportElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightPageElementSEL, FPDPreflightPageElementInterfacesNum,  CFPD_PreflightPageElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightAnnotElementSEL, FPDPreflightAnnotElementInterfacesNum,  CFPD_PreflightAnnotElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightResourceElmentSEL, FPDPreflightResourceElmentInterfacesNum,  CFPD_PreflightResourceElment_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightDocumentElementSEL, FPDPreflightDocumentElementInterfacesNum,  CFPD_PreflightDocumentElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightResultItemSEL, FPDPreflightResultItemInterfacesNum,  CFPD_PreflightResultItem_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightFixupItemSEL, FPDPreflightFixupItemInterfacesNum,  CFPD_PreflightFixupItem_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightGeneralStateSEL, FPDPreflightGeneralStateInterfacesNum,  CFPD_PreflightGeneralState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightTextStateSEL, FPDPreflightTextStateInterfacesNum,  CFPD_PreflightTextState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightGstateSEL, FPDPreflightGstateInterfacesNum,  CFPD_PreflightGstate_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightImageStateSEL, FPDPreflightImageStateInterfacesNum,  CFPD_PreflightImageState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightTriggersSEL, FPDPreflightTriggersInterfacesNum,  CFPD_PreflightTriggers_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightFormxobjStateSEL, FPDPreflightFormxobjStateInterfacesNum,  CFPD_PreflightFormxobjState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightShadeStateSEL, FPDPreflightShadeStateInterfacesNum,  CFPD_PreflightShadeState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightInkStateSEL, FPDPreflightInkStateInterfacesNum,  CFPD_PreflightInkState_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightHitItemSEL, FPDPreflightHitItemInterfacesNum,  CFPD_PreflightHitItem_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightHitsElementSEL, FPDPreflightHitsElementInterfacesNum,  CFPD_PreflightHitsElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightHitssetElementSEL, FPDPreflightHitssetElementInterfacesNum,  CFPD_PreflightHitssetElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightFixupElementSEL, FPDPreflightFixupElementInterfacesNum,  CFPD_PreflightFixupElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightResultElementSEL, FPDPreflightResultElementInterfacesNum,  CFPD_PreflightResultElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightInfoElementSEL, FPDPreflightInfoElementInterfacesNum,  CFPD_PreflightInfoElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightUIResultSEL, FPDPreflightUIResultInterfacesNum,  CFPD_PreflightUIResult_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructProgressCBFunParaSEL, FPDPreflightStructProgressCBFunParaInterfacesNum,  CFPD_PreflightStructProgressCBFunPara_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructConvertDataSEL, FPDPreflightStructConvertDataInterfacesNum,  CFPD_PreflightStructConvertData_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructConvertPDFXDataSEL, FPDPreflightStructConvertPDFXDataInterfacesNum,  CFPD_PreflightStructConvertPDFXData_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructConvertPDFADataSEL, FPDPreflightStructConvertPDFADataInterfacesNum,  CFPD_PreflightStructConvertPDFAData_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructParameterSEL, FPDPreflightStructParameterInterfacesNum,  CFPD_PreflightStructParameter_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructInfoSEL, FPDPreflightStructInfoInterfacesNum,  CFPD_PreflightStructInfo_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructPlateNameSEL, FPDPreflightStructPlateNameInterfacesNum,  CFPD_PreflightStructPlateName_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructPlateNamesSEL, FPDPreflightStructPlateNamesInterfacesNum,  CFPD_PreflightStructPlateNames_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructDocumentInfoSEL, FPDPreflightStructDocumentInfoInterfacesNum,  CFPD_PreflightStructDocumentInfo_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructProfileIlluminantSEL, FPDPreflightStructProfileIlluminantInterfacesNum,  CFPD_PreflightStructProfileIlluminant_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructProfileIDHashSEL, FPDPreflightStructProfileIDHashInterfacesNum,  CFPD_PreflightStructProfileIDHash_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructICCProfileSEL, FPDPreflightStructICCProfileInterfacesNum,  CFPD_PreflightStructICCProfile_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructAlternateColorantsSEL, FPDPreflightStructAlternateColorantsInterfacesNum,  CFPD_PreflightStructAlternateColorants_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructColorspaceSEL, FPDPreflightStructColorspaceInterfacesNum,  CFPD_PreflightStructColorspace_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructFontSEL, FPDPreflightStructFontInterfacesNum,  CFPD_PreflightStructFont_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructOutputIntentSEL, FPDPreflightStructOutputIntentInterfacesNum,  CFPD_PreflightStructOutputIntent_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructLayerSEL, FPDPreflightStructLayerInterfacesNum,  CFPD_PreflightStructLayer_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructEmbeddedFileSEL, FPDPreflightStructEmbeddedFileInterfacesNum,  CFPD_PreflightStructEmbeddedFile_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructFormXObjectSEL, FPDPreflightStructFormXObjectInterfacesNum,  CFPD_PreflightStructFormXObject_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructShadeSEL, FPDPreflightStructShadeInterfacesNum,  CFPD_PreflightStructShade_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructPatternSEL, FPDPreflightStructPatternInterfacesNum,  CFPD_PreflightStructPattern_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructAnnotSEL, FPDPreflightStructAnnotInterfacesNum,  CFPD_PreflightStructAnnot_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructPageSEL, FPDPreflightStructPageInterfacesNum,  CFPD_PreflightStructPage_V16_Initiator::InitFuncMappingTable },
+	{ FPDPreflightStructTriggerItemSEL, FPDPreflightStructTriggerItemInterfacesNum,  CFPD_PreflightStructTriggerItem_V16_Initiator::InitFuncMappingTable },
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+	{ FPD3DBuiltinSEL, FPD3DBuiltinInterfacesNum,  CFPD_3DBuiltin_V16_Initiator::InitFuncMappingTable },
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+	{ FPDConvertTaggedPDFHandlerSEL, FPDConvertTaggedPDFHandlerInterfacesNum,  CFPD_ConvertTaggedPDFHandler_V16_Initiator::InitFuncMappingTable },
+	{ FPDDestructObjectSEL, FPDDestructObjectInterfacesNum,  CFPD_DestructObject_V16_Initiator::InitFuncMappingTable },
+	{ FPDConverterOptionsSEL, FPDConverterOptionsInterfacesNum,  CFPD_ConverterOptions_V16_Initiator::InitFuncMappingTable },
+	{ FPDConverterHandlerSEL, FPDConverterHandlerInterfacesNum,  CFPD_ConverterHandler_V16_Initiator::InitFuncMappingTable },
+	{ FPDConverterSEL, FPDConverterInterfacesNum,  CFPD_Converter_V16_Initiator::InitFuncMappingTable },
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDStructTreeSEL, FPDStructTreeInterfacesNum,  CFPD_StructTree_V16_Initiator::InitFuncMappingTable },
+	{ FPDStructElementSEL, FPDStructElementInterfacesNum,  CFPD_StructElement_V16_Initiator::InitFuncMappingTable },
+	{ FPDStructTreeEntitySEL, FPDStructTreeEntityInterfacesNum,  CFPD_StructTreeEntity_V16_Initiator::InitFuncMappingTable },
+	{ FPDMarkContentReferenceSEL, FPDMarkContentReferenceInterfacesNum,  CFPD_MarkContentReference_V16_Initiator::InitFuncMappingTable },
+	{ FPDObjectReferenceSEL, FPDObjectReferenceInterfacesNum,  CFPD_ObjectReference_V16_Initiator::InitFuncMappingTable },
+	{ FPDMarkInfoSEL, FPDMarkInfoInterfacesNum,  CFPD_MarkInfo_V16_Initiator::InitFuncMappingTable },
+	{ FPDPageTemplateSEL, FPDPageTemplateInterfacesNum,  CFPD_PageTemplate_V16_Initiator::InitFuncMappingTable },
+	{ FPDEmbedFontSubsetSEL, FPDEmbedFontSubsetInterfacesNum,  CFPD_EmbedFontSubset_V16_Initiator::InitFuncMappingTable },
+	{ FPDEngineSEL, FPDEngineInterfacesNum,  CFPD_Engine_V16_Initiator::InitFuncMappingTable },
+	{ FPDFlattenOptionsSEL, FPDFlattenOptionsInterfacesNum,  CFPD_FlattenOptions_V16_Initiator::InitFuncMappingTable },
+	{ FPDOCSPCacheSEL, FPDOCSPCacheInterfacesNum,  CFPD_OCSPCache_V16_Initiator::InitFuncMappingTable },
+	{ FPDTimeStampServerNotifySEL, FPDTimeStampServerNotifyInterfacesNum,  CFPD_TimeStampServerNotify_V16_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+	{ FPDWordRangeSEL, FPDWordRangeInterfacesNum,  CFPD_WordRange_V16_Initiator::InitFuncMappingTable },
+	{ FPDWordPropsSEL, FPDWordPropsInterfacesNum,  CFPD_WordProps_V16_Initiator::InitFuncMappingTable },
+	{ FPDEditSEL, FPDEditInterfacesNum,  CFPD_Edit_V16_Initiator::InitFuncMappingTable },
+	{ FPDEditFontMapSEL, FPDEditFontMapInterfacesNum,  CFPD_EditFontMap_V16_Initiator::InitFuncMappingTable },
+	{ FPDVTWordSEL, FPDVTWordInterfacesNum,  CFPD_VTWord_V16_Initiator::InitFuncMappingTable },
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+	{ FPDXFARenderOptionsSEL, FPDXFARenderOptionsInterfacesNum,  CFPD_XFARenderOptions_V16_Initiator::InitFuncMappingTable },
+	{ FPDXFARenderContextSEL, FPDXFARenderContextInterfacesNum,  CFPD_XFARenderContext_V16_Initiator::InitFuncMappingTable },
+	{ FPDXFAConverterSEL, FPDXFAConverterInterfacesNum,  CFPD_XFAConverter_V16_Initiator::InitFuncMappingTable },
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+	{ FPDLRContextSEL, FPDLRContextInterfacesNum,  CFPD_LRContext_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRStructureElementRefSEL, FPDLRStructureElementRefInterfacesNum,  CFPD_LRStructureElementRef_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRElementListRefSEL, FPDLRElementListRefInterfacesNum,  CFPD_LRElementListRef_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRElementRefSEL, FPDLRElementRefInterfacesNum,  CFPD_LRElementRef_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRContentElementRefSEL, FPDLRContentElementRefInterfacesNum,  CFPD_LRContentElementRef_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRPageObjectElementRefSEL, FPDLRPageObjectElementRefInterfacesNum,  CFPD_LRPageObjectElementRef_V16_Initiator::InitFuncMappingTable },
+	{ FPDLRParseOptionsSEL, FPDLRParseOptionsInterfacesNum,  CFPD_LRParseOptions_V16_Initiator::InitFuncMappingTable },
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+	{ FPDLongImageEncoderSEL, FPDLongImageEncoderInterfacesNum,  CFPD_LongImageEncoder_V16_Initiator::InitFuncMappingTable },
+	{ FPDLongImageSEL, FPDLongImageInterfacesNum,  CFPD_LongImage_V16_Initiator::InitFuncMappingTable },
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+	{ FPDGraphicObjectsSEL, FPDGraphicObjectsInterfacesNum,  CFPD_GraphicObjects_V16_Initiator::InitFuncMappingTable },
+	{ FPDPDFObjectExtracterSEL, FPDPDFObjectExtracterInterfacesNum,  CFPD_PDFObjectExtracter_V16_Initiator::InitFuncMappingTable },
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+	{ FPDContentMarkItemRefSEL, FPDContentMarkItemRefInterfacesNum,  CFPD_ContentMarkItemRef_V16_Initiator::InitFuncMappingTable },
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+	{ FPDNumberTreeSEL, FPDNumberTreeInterfacesNum,  CFPD_NumberTree_V16_Initiator::InitFuncMappingTable },
+	{ FPDSizeAnalysisSEL, FPDSizeAnalysisInterfacesNum,  CFPD_SizeAnalysis_V16_Initiator::InitFuncMappingTable },
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+	{ FPDGraphicsSEL, FPDGraphicsInterfacesNum,  CFPD_Graphics_V16_Initiator::InitFuncMappingTable },
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+	{ FPDProgressHandlerSEL, FPDProgressHandlerInterfacesNum,  CFPD_ProgressHandler_V16_Initiator::InitFuncMappingTable },
+	{ FPDRuleSetSEL, FPDRuleSetInterfacesNum,  CFPD_RuleSet_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemSEL, FPDValidatorFeedbackItemInterfacesNum,  CFPD_ValidatorFeedbackItem_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemFontSEL, FPDValidatorFeedbackItemFontInterfacesNum,  CFPD_ValidatorFeedbackItemFont_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemAnnotSEL, FPDValidatorFeedbackItemAnnotInterfacesNum,  CFPD_ValidatorFeedbackItemAnnot_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemPageSEL, FPDValidatorFeedbackItemPageInterfacesNum,  CFPD_ValidatorFeedbackItemPage_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemPageContentSEL, FPDValidatorFeedbackItemPageContentInterfacesNum,  CFPD_ValidatorFeedbackItemPageContent_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemStructElemSEL, FPDValidatorFeedbackItemStructElemInterfacesNum,  CFPD_ValidatorFeedbackItemStructElem_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemFieldSEL, FPDValidatorFeedbackItemFieldInterfacesNum,  CFPD_ValidatorFeedbackItemField_V16_Initiator::InitFuncMappingTable },
+	{ FPDValidatorSEL, FPDValidatorInterfacesNum,  CFPD_Validator_V16_Initiator::InitFuncMappingTable },
+// fpd_validateImpl.h end
+
+//----------_V17----------
+// In file fs_basicImpl.h
+	{ FSRectSEL, FSRectInterfacesNum,  CFS_Rect_V17_Initiator::InitFuncMappingTable },
+	{ FSMemoryMgrSEL, FSMemoryMgrInterfacesNum,  CFS_MemoryMgr_V17_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+	{ FSUnicodeMgrSEL, FSUnicodeMgrInterfacesNum,  CFS_UnicodeMgr_V17_Initiator::InitFuncMappingTable },
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRPrintMgrSEL, FRPrintMgrInterfacesNum,  CFR_PrintMgr_V17_Initiator::InitFuncMappingTable },
+	{ FREncryptedDocMgrSEL, FREncryptedDocMgrInterfacesNum,  CFR_EncryptedDocMgr_V17_Initiator::InitFuncMappingTable },
+	{ FRPDFBitmapMgrSEL, FRPDFBitmapMgrInterfacesNum,  CFR_PDFBitmapMgr_V17_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+	{ FRRibbonHandlerSEL, FRRibbonHandlerInterfacesNum,  CFR_RibbonHandler_V17_Initiator::InitFuncMappingTable },
+	{ FRCustomControSEL, FRCustomControInterfacesNum,  CFR_CustomContro_V17_Initiator::InitFuncMappingTable },
+	{ FRFloatBarManagerSEL, FRFloatBarManagerInterfacesNum,  CFR_FloatBarManager_V17_Initiator::InitFuncMappingTable },
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+	{ FRAccessibleSEL, FRAccessibleInterfacesNum,  CFR_Accessible_V17_Initiator::InitFuncMappingTable },
+	{ FRPageObserverSEL, FRPageObserverInterfacesNum,  CFR_PageObserver_V17_Initiator::InitFuncMappingTable },
+	{ FRAnnotHandlerSEL, FRAnnotHandlerInterfacesNum,  CFR_AnnotHandler_V17_Initiator::InitFuncMappingTable },
+	{ FRWidgetAnnotHandlerSEL, FRWidgetAnnotHandlerInterfacesNum,  CFR_WidgetAnnotHandler_V17_Initiator::InitFuncMappingTable },
+	{ FRAnnotOperateHandlerSEL, FRAnnotOperateHandlerInterfacesNum,  CFR_AnnotOperateHandler_V17_Initiator::InitFuncMappingTable },
+	{ FRBaseAnnotSEL, FRBaseAnnotInterfacesNum,  CFR_BaseAnnot_V17_Initiator::InitFuncMappingTable },
+	{ FRSaveAsNotifySEL, FRSaveAsNotifyInterfacesNum,  CFR_SaveAsNotify_V17_Initiator::InitFuncMappingTable },
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+	{ FPDITipTouchupSEL, FPDITipTouchupInterfacesNum,  CFPD_ITipTouchup_V17_Initiator::InitFuncMappingTable },
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+	{ FPD3DMatrix4x4SEL, FPD3DMatrix4x4InterfacesNum,  CFPD_3DMatrix4x4_V17_Initiator::InitFuncMappingTable },
+	{ FPD3dCustomToolButtonDataSEL, FPD3dCustomToolButtonDataInterfacesNum,  CFPD_3dCustomToolButtonData_V17_Initiator::InitFuncMappingTable },
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+	{ FPDCBCCodeBaseSEL, FPDCBCCodeBaseInterfacesNum,  CFPD_CBCCodeBase_V17_Initiator::InitFuncMappingTable },
+	{ FPDCBCDataMatrixSEL, FPDCBCDataMatrixInterfacesNum,  CFPD_CBCDataMatrix_V17_Initiator::InitFuncMappingTable },
+	{ FPDCBCPDF417ISEL, FPDCBCPDF417IInterfacesNum,  CFPD_CBCPDF417I_V17_Initiator::InitFuncMappingTable },
+	{ FPDCBCQRCodeSEL, FPDCBCQRCodeInterfacesNum,  CFPD_CBCQRCode_V17_Initiator::InitFuncMappingTable },
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDDateTimeSEL, FPDDateTimeInterfacesNum,  CFPD_DateTime_V17_Initiator::InitFuncMappingTable },
+	{ FPDOrganizeParamSEL, FPDOrganizeParamInterfacesNum,  CFPD_OrganizeParam_V17_Initiator::InitFuncMappingTable },
+	{ FPDOrganizerSEL, FPDOrganizerInterfacesNum,  CFPD_Organizer_V17_Initiator::InitFuncMappingTable },
+	{ FPDFormExportHandlerSEL, FPDFormExportHandlerInterfacesNum,  CFPD_FormExportHandler_V17_Initiator::InitFuncMappingTable },
+	{ FPDEngineLIBINFOSEL, FPDEngineLIBINFOInterfacesNum,  CFPD_EngineLIBINFO_V17_Initiator::InitFuncMappingTable },
+	{ FPDEngineTokenINFOSEL, FPDEngineTokenINFOInterfacesNum,  CFPD_EngineTokenINFO_V17_Initiator::InitFuncMappingTable },
+	{ FPDExtracterSEL, FPDExtracterInterfacesNum,  CFPD_Extracter_V17_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+	{ FPDPWLCREATEPARAMSEL, FPDPWLCREATEPARAMInterfacesNum,  CFPD_PWLCREATEPARAM_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLEditSEL, FPDCPWLEditInterfacesNum,  CFPD_CPWLEdit_V17_Initiator::InitFuncMappingTable },
+	{ FPDVariableTextIteratorSEL, FPDVariableTextIteratorInterfacesNum,  CFPD_VariableTextIterator_V17_Initiator::InitFuncMappingTable },
+	{ FPDVTLineSEL, FPDVTLineInterfacesNum,  CFPD_VTLine_V17_Initiator::InitFuncMappingTable },
+	{ FPDVTSectionSEL, FPDVTSectionInterfacesNum,  CFPD_VTSection_V17_Initiator::InitFuncMappingTable },
+	{ FPDVariableTextSEL, FPDVariableTextInterfacesNum,  CFPD_VariableText_V17_Initiator::InitFuncMappingTable },
+	{ FPDEDITFontDataSEL, FPDEDITFontDataInterfacesNum,  CFPD_EDITFontData_V17_Initiator::InitFuncMappingTable },
+	{ FPDBulletWordIteratorSEL, FPDBulletWordIteratorInterfacesNum,  CFPD_BulletWordIterator_V17_Initiator::InitFuncMappingTable },
+	{ FPDVTWordPlaceSEL, FPDVTWordPlaceInterfacesNum,  CFPD_VTWordPlace_V17_Initiator::InitFuncMappingTable },
+	{ FPDEDITFONTDATAArraySEL, FPDEDITFONTDATAArrayInterfacesNum,  CFPD_EDITFONTDATAArray_V17_Initiator::InitFuncMappingTable },
+	{ FPDVTBulletIteratorSEL, FPDVTBulletIteratorInterfacesNum,  CFPD_VTBulletIterator_V17_Initiator::InitFuncMappingTable },
+	{ FPDTextListSEL, FPDTextListInterfacesNum,  CFPD_TextList_V17_Initiator::InitFuncMappingTable },
+	{ FPDPWLFillerNotifySEL, FPDPWLFillerNotifyInterfacesNum,  CFPD_PWLFillerNotify_V17_Initiator::InitFuncMappingTable },
+	{ FPDListSEL, FPDListInterfacesNum,  CFPD_List_V17_Initiator::InitFuncMappingTable },
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+	{ FPDFMFontMgrSEL, FPDFMFontMgrInterfacesNum,  CFPD_FMFontMgr_V17_Initiator::InitFuncMappingTable },
+	{ FPDFMFontDescriptorSEL, FPDFMFontDescriptorInterfacesNum,  CFPD_FMFontDescriptor_V17_Initiator::InitFuncMappingTable },
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+	{ FPDJSEngineSEL, FPDJSEngineInterfacesNum,  CFPD_JSEngine_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSAppProviderSEL, FPDJSAppProviderInterfacesNum,  CFPD_JSAppProvider_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSRuntimeSEL, FPDJSRuntimeInterfacesNum,  CFPD_JSRuntime_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSContextSEL, FPDJSContextInterfacesNum,  CFPD_JSContext_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSFieldActionSEL, FPDJSFieldActionInterfacesNum,  CFPD_JSFieldAction_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSDocumentProviderSEL, FPDJSDocumentProviderInterfacesNum,  CFPD_JSDocumentProvider_V17_Initiator::InitFuncMappingTable },
+	{ FPDJSFormProviderSEL, FPDJSFormProviderInterfacesNum,  CFPD_JSFormProvider_V17_Initiator::InitFuncMappingTable },
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+	{ FPDLRAnalysisOptionsSEL, FPDLRAnalysisOptionsInterfacesNum,  CFPD_LRAnalysisOptions_V17_Initiator::InitFuncMappingTable },
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+	{ FPDMathGraphicsSEL, FPDMathGraphicsInterfacesNum,  CFPD_MathGraphics_V17_Initiator::InitFuncMappingTable },
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+	{ FPDPathDataSEL, FPDPathDataInterfacesNum,  CFPD_PathData_V17_Initiator::InitFuncMappingTable },
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+	{ FPDSyntaxParserSEL, FPDSyntaxParserInterfacesNum,  CFPD_SyntaxParser_V17_Initiator::InitFuncMappingTable },
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+	{ FPDFXGInkPathSEL, FPDFXGInkPathInterfacesNum,  CFPD_FXGInkPath_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGPaintModuleMgrSEL, FPDFXGPaintModuleMgrInterfacesNum,  CFPD_FXGPaintModuleMgr_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGNIBParamsSEL, FPDFXGNIBParamsInterfacesNum,  CFPD_FXGNIBParams_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGCanvasSEL, FPDFXGCanvasInterfacesNum,  CFPD_FXGCanvas_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGPaintNibSEL, FPDFXGPaintNibInterfacesNum,  CFPD_FXGPaintNib_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGPaintRenderOptionSEL, FPDFXGPaintRenderOptionInterfacesNum,  CFPD_FXGPaintRenderOption_V17_Initiator::InitFuncMappingTable },
+	{ FPDFXGPaintSEL, FPDFXGPaintInterfacesNum,  CFPD_FXGPaint_V17_Initiator::InitFuncMappingTable },
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+	{ FPDCPWLListBoxSEL, FPDCPWLListBoxInterfacesNum,  CFPD_CPWLListBox_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLComboBoxSEL, FPDCPWLComboBoxInterfacesNum,  CFPD_CPWLComboBox_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLCheckBoxSEL, FPDCPWLCheckBoxInterfacesNum,  CFPD_CPWLCheckBox_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLRadioButtonSEL, FPDCPWLRadioButtonInterfacesNum,  CFPD_CPWLRadioButton_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLPushButtonSEL, FPDCPWLPushButtonInterfacesNum,  CFPD_CPWLPushButton_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLIconSEL, FPDCPWLIconInterfacesNum,  CFPD_CPWLIcon_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLEditCtrlSEL, FPDCPWLEditCtrlInterfacesNum,  CFPD_CPWLEditCtrl_V17_Initiator::InitFuncMappingTable },
+	{ FPDSpellCheckSEL, FPDSpellCheckInterfacesNum,  CFPD_SpellCheck_V17_Initiator::InitFuncMappingTable },
+	{ FPDCPWLSignatureSEL, FPDCPWLSignatureInterfacesNum,  CFPD_CPWLSignature_V17_Initiator::InitFuncMappingTable },
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+	{ FPDCustomCursorHandlerSEL, FPDCustomCursorHandlerInterfacesNum,  CFPD_CustomCursorHandler_V17_Initiator::InitFuncMappingTable },
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+	{ FPDCustomCryptoHandlerSEL, FPDCustomCryptoHandlerInterfacesNum,  CFPD_CustomCryptoHandler_V17_Initiator::InitFuncMappingTable },
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+	{ FPDOprCallbackSEL, FPDOprCallbackInterfacesNum,  CFPD_OprCallback_V17_Initiator::InitFuncMappingTable },
+	{ FPDFixSEL, FPDFixInterfacesNum,  CFPD_Fix_V17_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemRoleMapSEL, FPDValidatorFeedbackItemRoleMapInterfacesNum,  CFPD_ValidatorFeedbackItemRoleMap_V17_Initiator::InitFuncMappingTable },
+	{ FPDValidatorFeedbackItemMarkInfoSEL, FPDValidatorFeedbackItemMarkInfoInterfacesNum,  CFPD_ValidatorFeedbackItemMarkInfo_V17_Initiator::InitFuncMappingTable },
+// fpd_validateImpl.h end
+
+//----------_V18----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDSSLServerNoifyNotifySEL, FPDSSLServerNoifyNotifyInterfacesNum,  CFPD_SSLServerNoifyNotify_V18_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+	{ FPDMonoscaleBitmapSEL, FPDMonoscaleBitmapInterfacesNum,  CFPD_MonoscaleBitmap_V18_Initiator::InitFuncMappingTable },
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V19----------
+// In file fs_basicImpl.h
+	{ FSPrivateDataSEL, FSPrivateDataInterfacesNum,  CFS_PrivateData_V19_Initiator::InitFuncMappingTable },
+	{ FSVectorFSEL, FSVectorFInterfacesNum,  CFS_VectorF_V19_Initiator::InitFuncMappingTable },
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+	{ FRStartPageEventHandlerSEL, FRStartPageEventHandlerInterfacesNum,  CFR_StartPageEventHandler_V19_Initiator::InitFuncMappingTable },
+	{ FRUndoEventHandlerSEL, FRUndoEventHandlerInterfacesNum,  CFR_UndoEventHandler_V19_Initiator::InitFuncMappingTable },
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+	{ FPDEditAnnotHandlerSEL, FPDEditAnnotHandlerInterfacesNum,  CFPD_EditAnnotHandler_V19_Initiator::InitFuncMappingTable },
+	{ FPDITextEnhancerSEL, FPDITextEnhancerInterfacesNum,  CFPD_ITextEnhancer_V19_Initiator::InitFuncMappingTable },
+	{ FPDITextEnhancerOptionSEL, FPDITextEnhancerOptionInterfacesNum,  CFPD_ITextEnhancerOption_V19_Initiator::InitFuncMappingTable },
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+//----------_V20----------
+// In file fs_basicImpl.h
+// fs_basicImpl.h end
+
+// In file fs_stringImpl.h
+// fs_stringImpl.h end
+
+// In file fdrm_descImpl.h
+// fdrm_descImpl.h end
+
+// In file fdrm_managerImpl.h
+// fdrm_managerImpl.h end
+
+// In file fdrm_pdfImpl.h
+// fdrm_pdfImpl.h end
+
+// In file fdrm_pkiImpl.h
+// fdrm_pkiImpl.h end
+
+// In file fhtml_impl.h
+// fhtml_impl.h end
+
+// In file fr_appImpl.h
+// fr_appImpl.h end
+
+// In file fr_barImpl.h
+// fr_barImpl.h end
+
+// In file fr_docImpl.h
+// fr_docImpl.h end
+
+// In file fr_fxnetappImpl.h
+// fr_fxnetappImpl.h end
+
+// In file fr_menuImpl.h
+// fr_menuImpl.h end
+
+// In file fr_sysImpl.h
+// fr_sysImpl.h end
+
+// In file fr_viewImpl.h
+// fr_viewImpl.h end
+
+// In file middle_imagecompressImpl.h
+// middle_imagecompressImpl.h end
+
+// In file middle_optimizeImpl.h
+// middle_optimizeImpl.h end
+
+// In file middle_pdfImpl.h
+// middle_pdfImpl.h end
+
+// In file middle_portfolioImpl.h
+// middle_portfolioImpl.h end
+
+// In file middle_preflightImpl.h
+// middle_preflightImpl.h end
+
+// In file fofd_basicImpl.h
+// fofd_basicImpl.h end
+
+// In file fofd_docImpl.h
+// fofd_docImpl.h end
+
+// In file fofd_pageImpl.h
+// fofd_pageImpl.h end
+
+// In file fofd_renderImpl.h
+// fofd_renderImpl.h end
+
+// In file fofd_sigImpl.h
+// fofd_sigImpl.h end
+
+// In file fpd_3DImpl.h
+// fpd_3DImpl.h end
+
+// In file fpd_barcodeImpl.h
+// fpd_barcodeImpl.h end
+
+// In file fpd_convertImpl.h
+// fpd_convertImpl.h end
+
+// In file fpd_docImpl.h
+	{ FPDCCnkiSEL, FPDCCnkiInterfacesNum,  CFPD_CCnki_V20_Initiator::InitFuncMappingTable },
+	{ FPDSealInfoSEL, FPDSealInfoInterfacesNum,  CFPD_SealInfo_V20_Initiator::InitFuncMappingTable },
+// fpd_docImpl.h end
+
+// In file fpd_editImpl.h
+// fpd_editImpl.h end
+
+// In file fpd_epubImpl.h
+// fpd_epubImpl.h end
+
+// In file fpd_fontmgrImpl.h
+// fpd_fontmgrImpl.h end
+
+// In file fpd_fxxfaImpl.h
+// fpd_fxxfaImpl.h end
+
+// In file fpd_jsImpl.h
+// fpd_jsImpl.h end
+
+// In file fpd_lrImpl.h
+// fpd_lrImpl.h end
+
+// In file fpd_mathImpl.h
+// fpd_mathImpl.h end
+
+// In file fpd_objsImpl.h
+// fpd_objsImpl.h end
+
+// In file fpd_pageImpl.h
+// fpd_pageImpl.h end
+
+// In file fpd_pageobjImpl.h
+// fpd_pageobjImpl.h end
+
+// In file fpd_parserImpl.h
+// fpd_parserImpl.h end
+
+// In file fpd_psiImpl.h
+// fpd_psiImpl.h end
+
+// In file fpd_pwlImpl.h
+// fpd_pwlImpl.h end
+
+// In file fpd_renderImpl.h
+// fpd_renderImpl.h end
+
+// In file fpd_resourceImpl.h
+// fpd_resourceImpl.h end
+
+// In file fpd_serialImpl.h
+// fpd_serialImpl.h end
+
+// In file fpd_textImpl.h
+// fpd_textImpl.h end
+
+// In file fpd_validateImpl.h
+// fpd_validateImpl.h end
+
+// the last Item, only to make generation easiler,never used!
+	#endif
+	{-1, -1, 0}
+};
+
+#endif

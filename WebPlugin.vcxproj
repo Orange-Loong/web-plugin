@@ -39,13 +39,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Debug\</OutDir>
-    <IntDir>.\Debug\</IntDir>
+    <OutDir>$(ProjectDir)lib\plugins\</OutDir>
+    <IntDir>$(ProjectDir)Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\Release\</OutDir>
-    <IntDir>.\Release\</IntDir>
+    <OutDir>$(ProjectDir)lib\plugins\</OutDir>
+    <IntDir>$(ProjectDir)Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -56,13 +56,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(ProjectDir)..\lib\plugins\WebPlugin.fpi</OutputFile>
-      <ImportLibrary>$(OutDir)WebPlugin.lib</ImportLibrary>
+      <OutputFile>$(OutDir)WebPlugin.fpi</OutputFile>
+      <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
       <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
     </Link>
     <Midl>
@@ -70,6 +71,7 @@
     </Midl>
     <ResourceCompile>
       <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,12 +84,13 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UNICODE;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(ProjectDir)..\lib\plugins\WebPlugin.fpi</OutputFile>
-      <ImportLibrary>$(OutDir)WebPlugin.lib</ImportLibrary>
+      <OutputFile>$(OutDir)WebPlugin.fpi</OutputFile>
+      <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
       <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
     </Link>
     <Midl>
@@ -95,20 +98,20 @@
     </Midl>
     <ResourceCompile>
       <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\include\pimain\PIMain.cpp" />
-    <ClCompile Include="ConfigManager.cpp" />
-    <ClCompile Include="Resource.h" />
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="include\pimain\PIMain.cpp" />
+    <ClCompile Include="src\ConfigManager.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="WebBrowserDlg.cpp" />
-    <ClCompile Include="WebPlugin.cpp" />
+    <ClCompile Include="src\WebBrowserDlg.cpp" />
+    <ClCompile Include="src\WebPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="WebPlugin.def" />
@@ -117,15 +120,15 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="WebPlugin.rc" />
+    <ResourceCompile Include="src\WebPlugin.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\pimain\PIMain.h" />
-    <ClInclude Include="ConfigManager.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="WebBrowserDlg.h" />
-    <ClInclude Include="WebPlugin.h" />
+    <ClInclude Include="include\pimain\PIMain.h" />
+    <ClInclude Include="src\ConfigManager.h" />
+    <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\WebBrowserDlg.h" />
+    <ClInclude Include="src\WebPlugin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
