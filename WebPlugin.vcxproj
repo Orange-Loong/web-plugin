@@ -42,11 +42,15 @@
     <OutDir>$(ProjectDir)lib\plugins\</OutDir>
     <IntDir>$(ProjectDir)Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>WebPlugin</TargetName>
+    <TargetExt>.fpi</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)lib\plugins\</OutDir>
     <IntDir>$(ProjectDir)Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>WebPlugin</TargetName>
+    <TargetExt>.fpi</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -59,10 +63,8 @@
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)WebPlugin.fpi</OutputFile>
       <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
       <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
     </Link>
@@ -87,9 +89,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)WebPlugin.fpi</OutputFile>
       <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
       <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
     </Link>
