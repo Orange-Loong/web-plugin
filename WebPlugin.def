@@ -1,0 +1,7 @@
+; WebPlugin.def : declares the module parameters.
+
+LIBRARY      "WebPlugin"
+
+EXPORTS
+    ; Plug-in entry point
+    PIHandshake

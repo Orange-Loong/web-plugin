@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoxitPlugin version="1">
+	<Property 
+		Name="WebPlugin"
+		FriendlyName="WebPlugin"
+		Description="Web Browser Plugin - Open specified domains in embedded browser"
+		PIPath="WebPlugin.fpi"
+		LoadBehavior="3"
+		MinVersion=""
+	/>
+</FoxitPlugin>

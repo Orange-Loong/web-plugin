@@ -1,0 +1,48 @@
+# Binaries
+*.fpi
+*.dll
+*.lib
+*.obj
+*.pdb
+*.exe
+*.exp
+
+# Build output
+Debug/
+Release/
+x64/
+*.user
+*.aps
+*.ncb
+*.suo
+*.sln.docstates
+*.tlog
+*.lastbuildstate
+*.idb
+*.log
+*.ilk
+*.pch
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+ipch/
+
+# Config (keep template, ignore actual)
+# config/domains.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Package
+*.zip
+*.tar.gz

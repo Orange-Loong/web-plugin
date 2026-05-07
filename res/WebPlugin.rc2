@@ -1,0 +1,36 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Simplified, China) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE_SIMPLIFIED, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(65001)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// 256x256 32-bit icon
+//
+IDR_MAINFRAME               ICON                    "res\\WebPlugin.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+STRINGTABLE
+BEGIN
+    IDS_WEBPLUGIN_TITLE       "WebPlugin"
+    IDS_WEBPLUGIN_DESCRIPTION "Web Browser Plugin for Foxit PDF Editor"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_RIBBON_CATEGORY       "Web Browser"
+    IDS_RIBBON_PANEL          "Web Browser"
+    IDS_RIBBON_BTN_OPENBROWSER "Open Browser"
+END
+
+#endif    // English (Simplified, China) resources
+/////////////////////////////////////////////////////////////////////////////

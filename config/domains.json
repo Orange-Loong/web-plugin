@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "defaultURL": "https://www.example.com",
+  "domains": [
+    "*.example.com",
+    "localhost",
+    "127.0.0.1"
+  ]
+}
