@@ -43,41 +43,54 @@
     <IntDir>.\Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <TargetName>WebPlugin</TargetName>
+    <TargetExt>.fpi</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>.\Release\</OutDir>
     <IntDir>.\Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <TargetName>WebPlugin</TargetName>
+    <TargetExt>.fpi</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_USRDLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
-      <OutputFile>lib\plugins\WebPlugin.fpi</OutputFile>
-      <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
-      <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
-    </Link>
     <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
     <ResourceCompile>
       <Culture>0x0804</Culture>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>.\Debug\WebPlugin.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\WebPlugin.def</ModuleDefinitionFile>
+    </Link>
     <PostBuildEvent>
-      <Command>"tools/PISignatureGen.exe" /sign "lib/plugins/WebPlugin.fpi" "tools/frdpisdkey.txt"
-copy "InstallWebPlugin.xml" "lib/plugins/InstallWebPlugin.xml"
-copy "config/domains.json" "lib/plugins/domains.json"</Command>
+      <Command>if not exist "..\..\lib\plugins" mkdir "..\..\lib\plugins"
+copy "$(OutDir)WebPlugin.fpi" "..\..\lib\plugins\WebPlugin.fpi"
+"..\..\tools\PISignatureGen.exe" /sign "..\..\lib\plugins\WebPlugin.fpi" "..\..\tools\frdpisdkey.txt"
+copy ".\InstallWebPlugin.xml" "..\..\lib\plugins\InstallWebPlugin.xml"
+copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,32 +100,39 @@ copy "config/domains.json" "lib/plugins/domains.json"</Command>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UNICODE;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UNICODE;_USRDLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <OutputFile>lib\plugins\WebPlugin.fpi</OutputFile>
-      <ImportLibrary>$(IntDir)WebPlugin.lib</ImportLibrary>
-      <ModuleDefinitionFile>$(ProjectDir)WebPlugin.def</ModuleDefinitionFile>
-    </Link>
     <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
     <ResourceCompile>
       <Culture>0x0804</Culture>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>.\Release\WebPlugin.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\WebPlugin.def</ModuleDefinitionFile>
+    </Link>
     <PostBuildEvent>
-      <Command>"tools/PISignatureGen.exe" /sign "lib/plugins/WebPlugin.fpi" "tools/frdpisdkey.txt"
-copy "InstallWebPlugin.xml" "lib/plugins/InstallWebPlugin.xml"
-copy "config/domains.json" "lib/plugins/domains.json"</Command>
+      <Command>if not exist "..\..\lib\plugins" mkdir "..\..\lib\plugins"
+copy "$(OutDir)WebPlugin.fpi" "..\..\lib\plugins\WebPlugin.fpi"
+"..\..\tools\PISignatureGen.exe" /sign "..\..\lib\plugins\WebPlugin.fpi" "..\..\tools\frdpisdkey.txt"
+copy ".\InstallWebPlugin.xml" "..\..\lib\plugins\InstallWebPlugin.xml"
+copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\pimain\PIMain.cpp" />
+    <ClCompile Include="..\..\include\pimain\PIMain.cpp" />
     <ClCompile Include="src\ConfigManager.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -133,7 +153,7 @@ copy "config/domains.json" "lib/plugins/domains.json"</Command>
     <ResourceCompile Include="src\WebPlugin.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\pimain\PIMain.h" />
+    <ClInclude Include="..\..\include\pimain\PIMain.h" />
     <ClInclude Include="src\ConfigManager.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\stdafx.h" />
