@@ -86,11 +86,11 @@
       <ModuleDefinitionFile>.\WebPlugin.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "..\..\lib\plugins" mkdir "..\..\lib\plugins"
-copy "$(OutDir)WebPlugin.fpi" "..\..\lib\plugins\WebPlugin.fpi"
-"..\..\tools\PISignatureGen.exe" /sign "..\..\lib\plugins\WebPlugin.fpi" "..\..\tools\frdpisdkey.txt"
-copy ".\InstallWebPlugin.xml" "..\..\lib\plugins\InstallWebPlugin.xml"
-copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
+      <Command>if not exist "lib\plugins" mkdir "lib\plugins"
+copy "$(OutDir)WebPlugin.fpi" "lib\plugins\WebPlugin.fpi"
+"tools\PISignatureGen.exe" /sign "lib\plugins\WebPlugin.fpi" "tools\frdpisdkey.txt"
+copy "InstallWebPlugin.xml" "lib\plugins\InstallWebPlugin.xml"
+copy "config\domains.json" "lib\plugins\domains.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,11 +124,11 @@ copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
       <ModuleDefinitionFile>.\WebPlugin.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "..\..\lib\plugins" mkdir "..\..\lib\plugins"
-copy "$(OutDir)WebPlugin.fpi" "..\..\lib\plugins\WebPlugin.fpi"
-"..\..\tools\PISignatureGen.exe" /sign "..\..\lib\plugins\WebPlugin.fpi" "..\..\tools\frdpisdkey.txt"
-copy ".\InstallWebPlugin.xml" "..\..\lib\plugins\InstallWebPlugin.xml"
-copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
+      <Command>if not exist "lib\plugins" mkdir "lib\plugins"
+copy "$(OutDir)WebPlugin.fpi" "lib\plugins\WebPlugin.fpi"
+"tools\PISignatureGen.exe" /sign "lib\plugins\WebPlugin.fpi" "tools\frdpisdkey.txt"
+copy "InstallWebPlugin.xml" "lib\plugins\InstallWebPlugin.xml"
+copy "config\domains.json" "lib\plugins\domains.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
