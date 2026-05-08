@@ -132,7 +132,7 @@ copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\include\pimain\PIMain.cpp" />
+    <ClCompile Include="include\pimain\PIMain.cpp" />
     <ClCompile Include="src\ConfigManager.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -153,7 +153,7 @@ copy ".\config\domains.json" "..\..\lib\plugins\domains.json"</Command>
     <ResourceCompile Include="src\WebPlugin.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\pimain\PIMain.h" />
+    <ClInclude Include="include\pimain\PIMain.h" />
     <ClInclude Include="src\ConfigManager.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\stdafx.h" />
